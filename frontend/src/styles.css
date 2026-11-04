@@ -1,0 +1,165 @@
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --base: #121417;
+  --panel: #171a1f;
+  --panel2: #1d2128;
+  --edge: #252a33;
+  --ink: #e6edf5;
+  --muted: #8a94a6;
+  --cyan: #38bdf8;
+  --pink: #f472b6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--base);
+  color: var(--ink);
+  font-family: Inter, system-ui, "Segoe UI", sans-serif;
+  font-feature-settings: "cv05", "ss01";
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.28);
+}
+
+/* thin engineering scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c323c;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a424f;
+  background-clip: content-box;
+}
+
+@layer components {
+  .panel {
+    @apply bg-panel border border-edge rounded-md;
+  }
+  .panel-title {
+    @apply flex items-center gap-2 px-3 h-9 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted border-b border-edge shrink-0;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 h-8 px-3 rounded text-xs font-medium
+      bg-panel2 border border-edge text-ink transition-colors
+      hover:border-cyan/60 hover:text-cyan disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 h-8 px-3 rounded text-xs font-semibold
+      bg-cyan text-base border border-cyan transition-all
+      hover:bg-cyan/90 disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 h-8 px-2.5 rounded text-xs
+      text-muted hover:text-ink hover:bg-panel2 transition-colors disabled:opacity-40;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 px-1.5 h-5 rounded text-[10px] font-mono uppercase tracking-wide border border-edge bg-panel2 text-muted;
+  }
+  .field {
+    @apply h-8 w-full px-2 rounded bg-base border border-edge text-xs text-ink
+      focus:outline-none focus:border-cyan/70 placeholder:text-muted/60;
+  }
+  .label {
+    @apply block text-[10px] uppercase tracking-[0.12em] text-muted mb-1;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+.status-RAW {
+  color: #8a94a6;
+}
+.status-VALIDATED {
+  color: #38bdf8;
+}
+.status-APPROVED {
+  color: #a3e635;
+}
+.status-REJECTED {
+  color: #f87171;
+}
+
+.sev-error {
+  color: #f87171;
+}
+.sev-warning {
+  color: #fbbf24;
+}
+.sev-info {
+  color: #8a94a6;
+}
+
+/* MapLibre chrome tuned to the dark UI */
+.maplibregl-ctrl-group {
+  background: #171a1f !important;
+  border: 1px solid #252a33 !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid #252a33 !important;
+}
+.maplibregl-ctrl-group button span {
+  filter: invert(1) hue-rotate(180deg) brightness(1.4);
+}
+.maplibregl-ctrl-attrib,
+.maplibregl-ctrl-attrib a {
+  background: rgba(18, 20, 23, 0.7) !important;
+  color: #8a94a6 !important;
+  font-size: 10px !important;
+}
+.maplibregl-canvas:focus {
+  outline: none;
+}
+
+.deck-tooltip {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  background: rgba(18, 20, 23, 0.94);
+  border: 1px solid #252a33;
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #e6edf5;
+  pointer-events: none;
+}
+
+canvas:focus {
+  outline: none;
+}
+
+input[type="range"] {
+  accent-color: #38bdf8;
+}

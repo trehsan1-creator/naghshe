@@ -1,0 +1,2076 @@
+{
+  "station": {
+    "easting": 512.42,
+    "northing": 918.88,
+    "elevation": 8.845,
+    "instrument_height": 1.52,
+    "reflector_height": 1.7
+  },
+  "offset": {
+    "easting": 105020.0,
+    "northing": 471480.0
+  },
+  "points": [
+    {
+      "point_number": "10",
+      "easting": 399.995,
+      "northing": 400.001,
+      "elevation": 0.851,
+      "slope_distance": 530.976,
+      "zenith_gon": 100.9369,
+      "hz_gon": 213.5836
+    },
+    {
+      "point_number": "11",
+      "easting": 400.004,
+      "northing": 402.0,
+      "elevation": 0.831,
+      "slope_distance": 529.021,
+      "zenith_gon": 100.9428,
+      "hz_gon": 213.6335
+    },
+    {
+      "point_number": "12",
+      "easting": 400.02,
+      "northing": 403.998,
+      "elevation": 0.815,
+      "slope_distance": 527.066,
+      "zenith_gon": 100.9482,
+      "hz_gon": 213.6829
+    },
+    {
+      "point_number": "13",
+      "easting": 400.045,
+      "northing": 405.999,
+      "elevation": 0.819,
+      "slope_distance": 525.106,
+      "zenith_gon": 100.9513,
+      "hz_gon": 213.7317
+    },
+    {
+      "point_number": "14",
+      "easting": 400.079,
+      "northing": 407.997,
+      "elevation": 0.796,
+      "slope_distance": 523.148,
+      "zenith_gon": 100.9576,
+      "hz_gon": 213.7797
+    },
+    {
+      "point_number": "15",
+      "easting": 400.126,
+      "northing": 409.998,
+      "elevation": 0.784,
+      "slope_distance": 521.184,
+      "zenith_gon": 100.9627,
+      "hz_gon": 213.8266
+    },
+    {
+      "point_number": "16",
+      "easting": 400.18,
+      "northing": 411.998,
+      "elevation": 0.776,
+      "slope_distance": 519.22,
+      "zenith_gon": 100.9673,
+      "hz_gon": 213.873
+    },
+    {
+      "point_number": "17",
+      "easting": 400.246,
+      "northing": 413.996,
+      "elevation": 0.766,
+      "slope_distance": 517.256,
+      "zenith_gon": 100.9722,
+      "hz_gon": 213.9182
+    },
+    {
+      "point_number": "18",
+      "easting": 400.321,
+      "northing": 416.0,
+      "elevation": 0.748,
+      "slope_distance": 515.284,
+      "zenith_gon": 100.9782,
+      "hz_gon": 213.9629
+    },
+    {
+      "point_number": "19",
+      "easting": 400.404,
+      "northing": 417.996,
+      "elevation": 0.736,
+      "slope_distance": 513.318,
+      "zenith_gon": 100.9834,
+      "hz_gon": 214.0067
+    },
+    {
+      "point_number": "20",
+      "easting": 400.499,
+      "northing": 419.993,
+      "elevation": 0.722,
+      "slope_distance": 511.349,
+      "zenith_gon": 100.9889,
+      "hz_gon": 214.0494
+    },
+    {
+      "point_number": "21",
+      "easting": 400.605,
+      "northing": 421.99,
+      "elevation": 0.715,
+      "slope_distance": 509.378,
+      "zenith_gon": 100.9936,
+      "hz_gon": 214.0911
+    },
+    {
+      "point_number": "22",
+      "easting": 400.722,
+      "northing": 423.984,
+      "elevation": 0.693,
+      "slope_distance": 507.407,
+      "zenith_gon": 101.0003,
+      "hz_gon": 214.1317
+    },
+    {
+      "point_number": "23",
+      "easting": 400.845,
+      "northing": 425.983,
+      "elevation": 0.684,
+      "slope_distance": 505.431,
+      "zenith_gon": 101.0053,
+      "hz_gon": 214.172
+    },
+    {
+      "point_number": "24",
+      "easting": 400.977,
+      "northing": 427.977,
+      "elevation": 0.676,
+      "slope_distance": 503.457,
+      "zenith_gon": 101.0102,
+      "hz_gon": 214.2114
+    },
+    {
+      "point_number": "25",
+      "easting": 401.127,
+      "northing": 429.973,
+      "elevation": 0.665,
+      "slope_distance": 501.478,
+      "zenith_gon": 101.0156,
+      "hz_gon": 214.249
+    },
+    {
+      "point_number": "26",
+      "easting": 401.282,
+      "northing": 431.965,
+      "elevation": 0.654,
+      "slope_distance": 499.502,
+      "zenith_gon": 101.0211,
+      "hz_gon": 214.2861
+    },
+    {
+      "point_number": "27",
+      "easting": 401.445,
+      "northing": 433.96,
+      "elevation": 0.638,
+      "slope_distance": 497.521,
+      "zenith_gon": 101.0272,
+      "hz_gon": 214.3225
+    },
+    {
+      "point_number": "28",
+      "easting": 401.617,
+      "northing": 435.952,
+      "elevation": 0.628,
+      "slope_distance": 495.541,
+      "zenith_gon": 101.0326,
+      "hz_gon": 214.3581
+    },
+    {
+      "point_number": "29",
+      "easting": 401.805,
+      "northing": 437.944,
+      "elevation": 0.61,
+      "slope_distance": 493.559,
+      "zenith_gon": 101.039,
+      "hz_gon": 214.3919
+    },
+    {
+      "point_number": "30",
+      "easting": 401.998,
+      "northing": 439.931,
+      "elevation": 0.6,
+      "slope_distance": 491.579,
+      "zenith_gon": 101.0445,
+      "hz_gon": 214.4253
+    },
+    {
+      "point_number": "31",
+      "easting": 402.199,
+      "northing": 441.921,
+      "elevation": 0.595,
+      "slope_distance": 489.595,
+      "zenith_gon": 101.0494,
+      "hz_gon": 214.4579
+    },
+    {
+      "point_number": "32",
+      "easting": 402.42,
+      "northing": 443.907,
+      "elevation": 0.583,
+      "slope_distance": 487.611,
+      "zenith_gon": 101.0552,
+      "hz_gon": 214.4882
+    },
+    {
+      "point_number": "33",
+      "easting": 402.643,
+      "northing": 445.897,
+      "elevation": 0.568,
+      "slope_distance": 485.623,
+      "zenith_gon": 101.0615,
+      "hz_gon": 214.5186
+    },
+    {
+      "point_number": "34",
+      "easting": 402.874,
+      "northing": 447.886,
+      "elevation": 0.562,
+      "slope_distance": 483.633,
+      "zenith_gon": 101.0667,
+      "hz_gon": 214.5482
+    },
+    {
+      "point_number": "35",
+      "easting": 403.124,
+      "northing": 449.87,
+      "elevation": 0.542,
+      "slope_distance": 481.645,
+      "zenith_gon": 101.0737,
+      "hz_gon": 214.5754
+    },
+    {
+      "point_number": "36",
+      "easting": 403.372,
+      "northing": 451.857,
+      "elevation": 0.532,
+      "slope_distance": 479.654,
+      "zenith_gon": 101.0795,
+      "hz_gon": 214.6032
+    },
+    {
+      "point_number": "37",
+      "easting": 403.641,
+      "northing": 453.838,
+      "elevation": 0.523,
+      "slope_distance": 477.664,
+      "zenith_gon": 101.0852,
+      "hz_gon": 214.6283
+    },
+    {
+      "point_number": "38",
+      "easting": 403.912,
+      "northing": 455.816,
+      "elevation": 0.51,
+      "slope_distance": 475.677,
+      "zenith_gon": 101.0915,
+      "hz_gon": 214.6533
+    },
+    {
+      "point_number": "39",
+      "easting": 404.2,
+      "northing": 457.794,
+      "elevation": 0.495,
+      "slope_distance": 473.686,
+      "zenith_gon": 101.0981,
+      "hz_gon": 214.6763
+    },
+    {
+      "point_number": "40",
+      "easting": 404.491,
+      "northing": 459.776,
+      "elevation": 0.483,
+      "slope_distance": 471.691,
+      "zenith_gon": 101.1043,
+      "hz_gon": 214.6991
+    },
+    {
+      "point_number": "41",
+      "easting": 396.498,
+      "northing": 399.997,
+      "elevation": 0.919,
+      "slope_distance": 531.731,
+      "zenith_gon": 100.9274,
+      "hz_gon": 213.9927
+    },
+    {
+      "point_number": "42",
+      "easting": 396.507,
+      "northing": 402.019,
+      "elevation": 0.905,
+      "slope_distance": 529.756,
+      "zenith_gon": 100.9326,
+      "hz_gon": 214.0447
+    },
+    {
+      "point_number": "43",
+      "easting": 396.52,
+      "northing": 404.036,
+      "elevation": 0.894,
+      "slope_distance": 527.786,
+      "zenith_gon": 100.9374,
+      "hz_gon": 214.0964
+    },
+    {
+      "point_number": "44",
+      "easting": 396.547,
+      "northing": 406.051,
+      "elevation": 0.88,
+      "slope_distance": 525.814,
+      "zenith_gon": 100.9426,
+      "hz_gon": 214.1468
+    },
+    {
+      "point_number": "45",
+      "easting": 396.58,
+      "northing": 408.071,
+      "elevation": 0.869,
+      "slope_distance": 523.837,
+      "zenith_gon": 100.9475,
+      "hz_gon": 214.197
+    },
+    {
+      "point_number": "46",
+      "easting": 396.631,
+      "northing": 410.089,
+      "elevation": 0.858,
+      "slope_distance": 521.859,
+      "zenith_gon": 100.9524,
+      "hz_gon": 214.2454
+    },
+    {
+      "point_number": "47",
+      "easting": 396.677,
+      "northing": 412.103,
+      "elevation": 0.849,
+      "slope_distance": 519.885,
+      "zenith_gon": 100.9571,
+      "hz_gon": 214.2946
+    },
+    {
+      "point_number": "48",
+      "easting": 396.748,
+      "northing": 414.115,
+      "elevation": 0.831,
+      "slope_distance": 517.908,
+      "zenith_gon": 100.963,
+      "hz_gon": 214.3412
+    },
+    {
+      "point_number": "49",
+      "easting": 396.825,
+      "northing": 416.133,
+      "elevation": 0.825,
+      "slope_distance": 515.925,
+      "zenith_gon": 100.9674,
+      "hz_gon": 214.3875
+    },
+    {
+      "point_number": "50",
+      "easting": 396.907,
+      "northing": 418.151,
+      "elevation": 0.806,
+      "slope_distance": 513.94,
+      "zenith_gon": 100.9735,
+      "hz_gon": 214.4337
+    },
+    {
+      "point_number": "51",
+      "easting": 397.008,
+      "northing": 420.166,
+      "elevation": 0.799,
+      "slope_distance": 511.955,
+      "zenith_gon": 100.9782,
+      "hz_gon": 214.4777
+    },
+    {
+      "point_number": "52",
+      "easting": 397.11,
+      "northing": 422.185,
+      "elevation": 0.787,
+      "slope_distance": 509.965,
+      "zenith_gon": 100.9835,
+      "hz_gon": 214.5222
+    },
+    {
+      "point_number": "53",
+      "easting": 397.229,
+      "northing": 424.193,
+      "elevation": 0.775,
+      "slope_distance": 507.983,
+      "zenith_gon": 100.9888,
+      "hz_gon": 214.5646
+    },
+    {
+      "point_number": "54",
+      "easting": 397.35,
+      "northing": 426.212,
+      "elevation": 0.76,
+      "slope_distance": 505.989,
+      "zenith_gon": 100.9946,
+      "hz_gon": 214.6073
+    },
+    {
+      "point_number": "55",
+      "easting": 397.488,
+      "northing": 428.221,
+      "elevation": 0.751,
+      "slope_distance": 504.002,
+      "zenith_gon": 100.9997,
+      "hz_gon": 214.6481
+    },
+    {
+      "point_number": "56",
+      "easting": 397.633,
+      "northing": 430.232,
+      "elevation": 0.738,
+      "slope_distance": 502.012,
+      "zenith_gon": 101.0053,
+      "hz_gon": 214.6884
+    },
+    {
+      "point_number": "57",
+      "easting": 397.795,
+      "northing": 432.245,
+      "elevation": 0.726,
+      "slope_distance": 500.016,
+      "zenith_gon": 101.0108,
+      "hz_gon": 214.7269
+    },
+    {
+      "point_number": "58",
+      "easting": 397.954,
+      "northing": 434.254,
+      "elevation": 0.711,
+      "slope_distance": 498.024,
+      "zenith_gon": 101.0168,
+      "hz_gon": 214.766
+    },
+    {
+      "point_number": "59",
+      "easting": 398.135,
+      "northing": 436.266,
+      "elevation": 0.703,
+      "slope_distance": 496.025,
+      "zenith_gon": 101.0219,
+      "hz_gon": 214.8027
+    },
+    {
+      "point_number": "60",
+      "easting": 398.32,
+      "northing": 438.275,
+      "elevation": 0.69,
+      "slope_distance": 494.028,
+      "zenith_gon": 101.0277,
+      "hz_gon": 214.8392
+    },
+    {
+      "point_number": "61",
+      "easting": 398.515,
+      "northing": 440.283,
+      "elevation": 0.672,
+      "slope_distance": 492.03,
+      "zenith_gon": 101.0342,
+      "hz_gon": 214.8747
+    },
+    {
+      "point_number": "62",
+      "easting": 398.721,
+      "northing": 442.288,
+      "elevation": 0.663,
+      "slope_distance": 490.032,
+      "zenith_gon": 101.0396,
+      "hz_gon": 214.909
+    },
+    {
+      "point_number": "63",
+      "easting": 398.94,
+      "northing": 444.295,
+      "elevation": 0.652,
+      "slope_distance": 488.03,
+      "zenith_gon": 101.0453,
+      "hz_gon": 214.9419
+    },
+    {
+      "point_number": "64",
+      "easting": 399.167,
+      "northing": 446.302,
+      "elevation": 0.641,
+      "slope_distance": 486.025,
+      "zenith_gon": 101.0511,
+      "hz_gon": 214.9741
+    },
+    {
+      "point_number": "65",
+      "easting": 399.398,
+      "northing": 448.306,
+      "elevation": 0.634,
+      "slope_distance": 484.023,
+      "zenith_gon": 101.0563,
+      "hz_gon": 215.006
+    },
+    {
+      "point_number": "66",
+      "easting": 399.649,
+      "northing": 450.308,
+      "elevation": 0.616,
+      "slope_distance": 482.018,
+      "zenith_gon": 101.0631,
+      "hz_gon": 215.0356
+    },
+    {
+      "point_number": "67",
+      "easting": 399.907,
+      "northing": 452.308,
+      "elevation": 0.608,
+      "slope_distance": 480.014,
+      "zenith_gon": 101.0686,
+      "hz_gon": 215.0644
+    },
+    {
+      "point_number": "68",
+      "easting": 400.171,
+      "northing": 454.307,
+      "elevation": 0.598,
+      "slope_distance": 478.009,
+      "zenith_gon": 101.0744,
+      "hz_gon": 215.0926
+    },
+    {
+      "point_number": "69",
+      "easting": 400.447,
+      "northing": 456.31,
+      "elevation": 0.583,
+      "slope_distance": 475.998,
+      "zenith_gon": 101.081,
+      "hz_gon": 215.1196
+    },
+    {
+      "point_number": "70",
+      "easting": 400.739,
+      "northing": 458.303,
+      "elevation": 0.572,
+      "slope_distance": 473.993,
+      "zenith_gon": 101.087,
+      "hz_gon": 215.1445
+    },
+    {
+      "point_number": "71",
+      "easting": 401.031,
+      "northing": 460.3,
+      "elevation": 0.556,
+      "slope_distance": 471.984,
+      "zenith_gon": 101.0938,
+      "hz_gon": 215.1697
+    },
+    {
+      "point_number": "72",
+      "easting": 396.801,
+      "northing": 400.0,
+      "elevation": 0.795,
+      "slope_distance": 531.664,
+      "zenith_gon": 100.9424,
+      "hz_gon": 213.9574
+    },
+    {
+      "point_number": "73",
+      "easting": 396.804,
+      "northing": 402.018,
+      "elevation": 0.79,
+      "slope_distance": 529.694,
+      "zenith_gon": 100.9465,
+      "hz_gon": 214.0098
+    },
+    {
+      "point_number": "74",
+      "easting": 396.818,
+      "northing": 404.031,
+      "elevation": 0.771,
+      "slope_distance": 527.727,
+      "zenith_gon": 100.9523,
+      "hz_gon": 214.0612
+    },
+    {
+      "point_number": "75",
+      "easting": 396.846,
+      "northing": 406.05,
+      "elevation": 0.757,
+      "slope_distance": 525.751,
+      "zenith_gon": 100.9576,
+      "hz_gon": 214.1114
+    },
+    {
+      "point_number": "76",
+      "easting": 396.882,
+      "northing": 408.067,
+      "elevation": 0.749,
+      "slope_distance": 523.776,
+      "zenith_gon": 100.9622,
+      "hz_gon": 214.1611
+    },
+    {
+      "point_number": "77",
+      "easting": 396.926,
+      "northing": 410.078,
+      "elevation": 0.738,
+      "slope_distance": 521.806,
+      "zenith_gon": 100.9672,
+      "hz_gon": 214.21
+    },
+    {
+      "point_number": "78",
+      "easting": 396.983,
+      "northing": 412.091,
+      "elevation": 0.72,
+      "slope_distance": 519.831,
+      "zenith_gon": 100.973,
+      "hz_gon": 214.2577
+    },
+    {
+      "point_number": "79",
+      "easting": 397.047,
+      "northing": 414.111,
+      "elevation": 0.715,
+      "slope_distance": 517.847,
+      "zenith_gon": 100.9774,
+      "hz_gon": 214.3052
+    },
+    {
+      "point_number": "80",
+      "easting": 397.121,
+      "northing": 416.124,
+      "elevation": 0.701,
+      "slope_distance": 515.869,
+      "zenith_gon": 100.9829,
+      "hz_gon": 214.3517
+    },
+    {
+      "point_number": "81",
+      "easting": 397.208,
+      "northing": 418.138,
+      "elevation": 0.687,
+      "slope_distance": 513.887,
+      "zenith_gon": 100.9884,
+      "hz_gon": 214.397
+    },
+    {
+      "point_number": "82",
+      "easting": 397.304,
+      "northing": 420.15,
+      "elevation": 0.677,
+      "slope_distance": 511.905,
+      "zenith_gon": 100.9935,
+      "hz_gon": 214.4414
+    },
+    {
+      "point_number": "83",
+      "easting": 397.405,
+      "northing": 422.165,
+      "elevation": 0.664,
+      "slope_distance": 509.92,
+      "zenith_gon": 100.9989,
+      "hz_gon": 214.4857
+    },
+    {
+      "point_number": "84",
+      "easting": 397.528,
+      "northing": 424.18,
+      "elevation": 0.649,
+      "slope_distance": 507.93,
+      "zenith_gon": 101.0047,
+      "hz_gon": 214.5277
+    },
+    {
+      "point_number": "85",
+      "easting": 397.652,
+      "northing": 426.189,
+      "elevation": 0.635,
+      "slope_distance": 505.945,
+      "zenith_gon": 101.0104,
+      "hz_gon": 214.5697
+    },
+    {
+      "point_number": "86",
+      "easting": 397.789,
+      "northing": 428.2,
+      "elevation": 0.626,
+      "slope_distance": 503.956,
+      "zenith_gon": 101.0156,
+      "hz_gon": 214.6105
+    },
+    {
+      "point_number": "87",
+      "easting": 397.933,
+      "northing": 430.211,
+      "elevation": 0.612,
+      "slope_distance": 501.966,
+      "zenith_gon": 101.0214,
+      "hz_gon": 214.6507
+    },
+    {
+      "point_number": "88",
+      "easting": 398.087,
+      "northing": 432.223,
+      "elevation": 0.605,
+      "slope_distance": 499.972,
+      "zenith_gon": 101.0263,
+      "hz_gon": 214.6901
+    },
+    {
+      "point_number": "89",
+      "easting": 398.253,
+      "northing": 434.229,
+      "elevation": 0.595,
+      "slope_distance": 497.982,
+      "zenith_gon": 101.0317,
+      "hz_gon": 214.7281
+    },
+    {
+      "point_number": "90",
+      "easting": 398.431,
+      "northing": 436.243,
+      "elevation": 0.581,
+      "slope_distance": 495.981,
+      "zenith_gon": 101.0377,
+      "hz_gon": 214.7651
+    },
+    {
+      "point_number": "91",
+      "easting": 398.616,
+      "northing": 438.245,
+      "elevation": 0.57,
+      "slope_distance": 493.991,
+      "zenith_gon": 101.0433,
+      "hz_gon": 214.8012
+    },
+    {
+      "point_number": "92",
+      "easting": 398.819,
+      "northing": 440.252,
+      "elevation": 0.557,
+      "slope_distance": 491.992,
+      "zenith_gon": 101.0492,
+      "hz_gon": 214.8355
+    },
+    {
+      "point_number": "93",
+      "easting": 399.022,
+      "northing": 442.258,
+      "elevation": 0.545,
+      "slope_distance": 489.993,
+      "zenith_gon": 101.055,
+      "hz_gon": 214.87
+    },
+    {
+      "point_number": "94",
+      "easting": 399.236,
+      "northing": 444.264,
+      "elevation": 0.54,
+      "slope_distance": 487.993,
+      "zenith_gon": 101.06,
+      "hz_gon": 214.9034
+    },
+    {
+      "point_number": "95",
+      "easting": 399.464,
+      "northing": 446.264,
+      "elevation": 0.521,
+      "slope_distance": 485.995,
+      "zenith_gon": 101.0669,
+      "hz_gon": 214.9351
+    },
+    {
+      "point_number": "96",
+      "easting": 399.699,
+      "northing": 448.268,
+      "elevation": 0.514,
+      "slope_distance": 483.992,
+      "zenith_gon": 101.0722,
+      "hz_gon": 214.9664
+    },
+    {
+      "point_number": "97",
+      "easting": 399.944,
+      "northing": 450.27,
+      "elevation": 0.494,
+      "slope_distance": 481.989,
+      "zenith_gon": 101.0793,
+      "hz_gon": 214.9965
+    },
+    {
+      "point_number": "98",
+      "easting": 400.204,
+      "northing": 452.271,
+      "elevation": 0.488,
+      "slope_distance": 479.983,
+      "zenith_gon": 101.0846,
+      "hz_gon": 215.0249
+    },
+    {
+      "point_number": "99",
+      "easting": 400.469,
+      "northing": 454.268,
+      "elevation": 0.475,
+      "slope_distance": 477.98,
+      "zenith_gon": 101.0909,
+      "hz_gon": 215.0528
+    },
+    {
+      "point_number": "100",
+      "easting": 400.745,
+      "northing": 456.265,
+      "elevation": 0.463,
+      "slope_distance": 475.974,
+      "zenith_gon": 101.0971,
+      "hz_gon": 215.0795
+    },
+    {
+      "point_number": "101",
+      "easting": 401.032,
+      "northing": 458.259,
+      "elevation": 0.453,
+      "slope_distance": 473.969,
+      "zenith_gon": 101.1031,
+      "hz_gon": 215.1049
+    },
+    {
+      "point_number": "102",
+      "easting": 401.331,
+      "northing": 460.253,
+      "elevation": 0.439,
+      "slope_distance": 471.961,
+      "zenith_gon": 101.1096,
+      "hz_gon": 215.1289
+    },
+    {
+      "point_number": "103",
+      "easting": 403.5,
+      "northing": 400.002,
+      "elevation": 0.917,
+      "slope_distance": 530.243,
+      "zenith_gon": 100.9303,
+      "hz_gon": 213.1723
+    },
+    {
+      "point_number": "104",
+      "easting": 403.506,
+      "northing": 401.985,
+      "elevation": 0.899,
+      "slope_distance": 528.302,
+      "zenith_gon": 100.9359,
+      "hz_gon": 213.2207
+    },
+    {
+      "point_number": "105",
+      "easting": 403.523,
+      "northing": 403.966,
+      "elevation": 0.891,
+      "slope_distance": 526.361,
+      "zenith_gon": 100.9403,
+      "hz_gon": 213.2681
+    },
+    {
+      "point_number": "106",
+      "easting": 403.545,
+      "northing": 405.944,
+      "elevation": 0.879,
+      "slope_distance": 524.421,
+      "zenith_gon": 100.9452,
+      "hz_gon": 213.3152
+    },
+    {
+      "point_number": "107",
+      "easting": 403.583,
+      "northing": 407.928,
+      "elevation": 0.867,
+      "slope_distance": 522.473,
+      "zenith_gon": 100.9502,
+      "hz_gon": 213.3608
+    },
+    {
+      "point_number": "108",
+      "easting": 403.624,
+      "northing": 409.913,
+      "elevation": 0.863,
+      "slope_distance": 520.524,
+      "zenith_gon": 100.9542,
+      "hz_gon": 213.4065
+    },
+    {
+      "point_number": "109",
+      "easting": 403.674,
+      "northing": 411.892,
+      "elevation": 0.845,
+      "slope_distance": 518.579,
+      "zenith_gon": 100.96,
+      "hz_gon": 213.4513
+    },
+    {
+      "point_number": "110",
+      "easting": 403.741,
+      "northing": 413.872,
+      "elevation": 0.834,
+      "slope_distance": 516.629,
+      "zenith_gon": 100.965,
+      "hz_gon": 213.4944
+    },
+    {
+      "point_number": "111",
+      "easting": 403.816,
+      "northing": 415.852,
+      "elevation": 0.822,
+      "slope_distance": 514.678,
+      "zenith_gon": 100.9702,
+      "hz_gon": 213.5369
+    },
+    {
+      "point_number": "112",
+      "easting": 403.903,
+      "northing": 417.836,
+      "elevation": 0.807,
+      "slope_distance": 512.721,
+      "zenith_gon": 100.9757,
+      "hz_gon": 213.5783
+    },
+    {
+      "point_number": "113",
+      "easting": 403.999,
+      "northing": 419.817,
+      "elevation": 0.8,
+      "slope_distance": 510.765,
+      "zenith_gon": 100.9803,
+      "hz_gon": 213.6189
+    },
+    {
+      "point_number": "114",
+      "easting": 404.097,
+      "northing": 421.796,
+      "elevation": 0.782,
+      "slope_distance": 508.811,
+      "zenith_gon": 100.9864,
+      "hz_gon": 213.6595
+    },
+    {
+      "point_number": "115",
+      "easting": 404.214,
+      "northing": 423.777,
+      "elevation": 0.776,
+      "slope_distance": 506.851,
+      "zenith_gon": 100.9909,
+      "hz_gon": 213.6981
+    },
+    {
+      "point_number": "116",
+      "easting": 404.338,
+      "northing": 425.753,
+      "elevation": 0.76,
+      "slope_distance": 504.894,
+      "zenith_gon": 100.9968,
+      "hz_gon": 213.736
+    },
+    {
+      "point_number": "117",
+      "easting": 404.468,
+      "northing": 427.729,
+      "elevation": 0.748,
+      "slope_distance": 502.937,
+      "zenith_gon": 101.0022,
+      "hz_gon": 213.7735
+    },
+    {
+      "point_number": "118",
+      "easting": 404.612,
+      "northing": 429.708,
+      "elevation": 0.736,
+      "slope_distance": 500.974,
+      "zenith_gon": 101.0076,
+      "hz_gon": 213.8096
+    },
+    {
+      "point_number": "119",
+      "easting": 404.768,
+      "northing": 431.692,
+      "elevation": 0.727,
+      "slope_distance": 499.003,
+      "zenith_gon": 101.0128,
+      "hz_gon": 213.8447
+    },
+    {
+      "point_number": "120",
+      "easting": 404.93,
+      "northing": 433.663,
+      "elevation": 0.716,
+      "slope_distance": 497.044,
+      "zenith_gon": 101.0182,
+      "hz_gon": 213.8789
+    },
+    {
+      "point_number": "121",
+      "easting": 405.103,
+      "northing": 435.639,
+      "elevation": 0.702,
+      "slope_distance": 495.078,
+      "zenith_gon": 101.024,
+      "hz_gon": 213.9121
+    },
+    {
+      "point_number": "122",
+      "easting": 405.282,
+      "northing": 437.612,
+      "elevation": 0.687,
+      "slope_distance": 493.114,
+      "zenith_gon": 101.03,
+      "hz_gon": 213.9448
+    },
+    {
+      "point_number": "123",
+      "easting": 405.484,
+      "northing": 439.583,
+      "elevation": 0.675,
+      "slope_distance": 491.146,
+      "zenith_gon": 101.0357,
+      "hz_gon": 213.9748
+    },
+    {
+      "point_number": "124",
+      "easting": 405.687,
+      "northing": 441.554,
+      "elevation": 0.661,
+      "slope_distance": 489.179,
+      "zenith_gon": 101.0417,
+      "hz_gon": 214.0048
+    },
+    {
+      "point_number": "125",
+      "easting": 405.899,
+      "northing": 443.527,
+      "elevation": 0.654,
+      "slope_distance": 487.208,
+      "zenith_gon": 101.0468,
+      "hz_gon": 214.0341
+    },
+    {
+      "point_number": "126",
+      "easting": 406.119,
+      "northing": 445.499,
+      "elevation": 0.641,
+      "slope_distance": 485.236,
+      "zenith_gon": 101.0528,
+      "hz_gon": 214.0625
+    },
+    {
+      "point_number": "127",
+      "easting": 406.353,
+      "northing": 447.467,
+      "elevation": 0.627,
+      "slope_distance": 483.265,
+      "zenith_gon": 101.0589,
+      "hz_gon": 214.0892
+    },
+    {
+      "point_number": "128",
+      "easting": 406.593,
+      "northing": 449.432,
+      "elevation": 0.624,
+      "slope_distance": 481.296,
+      "zenith_gon": 101.0636,
+      "hz_gon": 214.1153
+    },
+    {
+      "point_number": "129",
+      "easting": 406.845,
+      "northing": 451.401,
+      "elevation": 0.607,
+      "slope_distance": 479.32,
+      "zenith_gon": 101.0703,
+      "hz_gon": 214.1401
+    },
+    {
+      "point_number": "130",
+      "easting": 407.11,
+      "northing": 453.364,
+      "elevation": 0.593,
+      "slope_distance": 477.347,
+      "zenith_gon": 101.0766,
+      "hz_gon": 214.1633
+    },
+    {
+      "point_number": "131",
+      "easting": 407.374,
+      "northing": 455.327,
+      "elevation": 0.581,
+      "slope_distance": 475.375,
+      "zenith_gon": 101.0827,
+      "hz_gon": 214.1869
+    },
+    {
+      "point_number": "132",
+      "easting": 407.66,
+      "northing": 457.29,
+      "elevation": 0.574,
+      "slope_distance": 473.398,
+      "zenith_gon": 101.0881,
+      "hz_gon": 214.2077
+    },
+    {
+      "point_number": "133",
+      "easting": 407.953,
+      "northing": 459.253,
+      "elevation": 0.553,
+      "slope_distance": 471.419,
+      "zenith_gon": 101.0955,
+      "hz_gon": 214.2278
+    },
+    {
+      "point_number": "134",
+      "easting": 403.201,
+      "northing": 400.001,
+      "elevation": 0.793,
+      "slope_distance": 530.308,
+      "zenith_gon": 100.945,
+      "hz_gon": 213.2074
+    },
+    {
+      "point_number": "135",
+      "easting": 403.204,
+      "northing": 401.987,
+      "elevation": 0.787,
+      "slope_distance": 528.364,
+      "zenith_gon": 100.9492,
+      "hz_gon": 213.2564
+    },
+    {
+      "point_number": "136",
+      "easting": 403.22,
+      "northing": 403.967,
+      "elevation": 0.774,
+      "slope_distance": 526.424,
+      "zenith_gon": 100.9543,
+      "hz_gon": 213.304
+    },
+    {
+      "point_number": "137",
+      "easting": 403.246,
+      "northing": 405.951,
+      "elevation": 0.76,
+      "slope_distance": 524.478,
+      "zenith_gon": 100.9596,
+      "hz_gon": 213.3509
+    },
+    {
+      "point_number": "138",
+      "easting": 403.281,
+      "northing": 407.938,
+      "elevation": 0.752,
+      "slope_distance": 522.528,
+      "zenith_gon": 100.9641,
+      "hz_gon": 213.3971
+    },
+    {
+      "point_number": "139",
+      "easting": 403.324,
+      "northing": 409.915,
+      "elevation": 0.739,
+      "slope_distance": 520.586,
+      "zenith_gon": 100.9693,
+      "hz_gon": 213.4425
+    },
+    {
+      "point_number": "140",
+      "easting": 403.38,
+      "northing": 411.903,
+      "elevation": 0.726,
+      "slope_distance": 518.631,
+      "zenith_gon": 100.9746,
+      "hz_gon": 213.4869
+    },
+    {
+      "point_number": "141",
+      "easting": 403.442,
+      "northing": 413.884,
+      "elevation": 0.715,
+      "slope_distance": 516.682,
+      "zenith_gon": 100.9796,
+      "hz_gon": 213.5307
+    },
+    {
+      "point_number": "142",
+      "easting": 403.52,
+      "northing": 415.868,
+      "elevation": 0.698,
+      "slope_distance": 514.727,
+      "zenith_gon": 100.9854,
+      "hz_gon": 213.5731
+    },
+    {
+      "point_number": "143",
+      "easting": 403.599,
+      "northing": 417.85,
+      "elevation": 0.688,
+      "slope_distance": 512.774,
+      "zenith_gon": 100.9904,
+      "hz_gon": 213.6156
+    },
+    {
+      "point_number": "144",
+      "easting": 403.697,
+      "northing": 419.83,
+      "elevation": 0.681,
+      "slope_distance": 510.818,
+      "zenith_gon": 100.9951,
+      "hz_gon": 213.656
+    },
+    {
+      "point_number": "145",
+      "easting": 403.803,
+      "northing": 421.815,
+      "elevation": 0.669,
+      "slope_distance": 508.857,
+      "zenith_gon": 101.0004,
+      "hz_gon": 213.6959
+    },
+    {
+      "point_number": "146",
+      "easting": 403.916,
+      "northing": 423.795,
+      "elevation": 0.655,
+      "slope_distance": 506.899,
+      "zenith_gon": 101.006,
+      "hz_gon": 213.7351
+    },
+    {
+      "point_number": "147",
+      "easting": 404.036,
+      "northing": 425.777,
+      "elevation": 0.643,
+      "slope_distance": 504.938,
+      "zenith_gon": 101.0114,
+      "hz_gon": 213.7739
+    },
+    {
+      "point_number": "148",
+      "easting": 404.176,
+      "northing": 427.749,
+      "elevation": 0.63,
+      "slope_distance": 502.982,
+      "zenith_gon": 101.017,
+      "hz_gon": 213.8102
+    },
+    {
+      "point_number": "149",
+      "easting": 404.317,
+      "northing": 429.731,
+      "elevation": 0.619,
+      "slope_distance": 501.017,
+      "zenith_gon": 101.0224,
+      "hz_gon": 213.8469
+    },
+    {
+      "point_number": "150",
+      "easting": 404.471,
+      "northing": 431.711,
+      "elevation": 0.606,
+      "slope_distance": 499.051,
+      "zenith_gon": 101.0281,
+      "hz_gon": 213.8822
+    },
+    {
+      "point_number": "151",
+      "easting": 404.632,
+      "northing": 433.689,
+      "elevation": 0.591,
+      "slope_distance": 497.085,
+      "zenith_gon": 101.0341,
+      "hz_gon": 213.9169
+    },
+    {
+      "point_number": "152",
+      "easting": 404.806,
+      "northing": 435.664,
+      "elevation": 0.585,
+      "slope_distance": 495.12,
+      "zenith_gon": 101.039,
+      "hz_gon": 213.9501
+    },
+    {
+      "point_number": "153",
+      "easting": 404.991,
+      "northing": 437.637,
+      "elevation": 0.57,
+      "slope_distance": 493.154,
+      "zenith_gon": 101.045,
+      "hz_gon": 213.9822
+    },
+    {
+      "point_number": "154",
+      "easting": 405.183,
+      "northing": 439.612,
+      "elevation": 0.553,
+      "slope_distance": 491.186,
+      "zenith_gon": 101.0514,
+      "hz_gon": 214.0137
+    },
+    {
+      "point_number": "155",
+      "easting": 405.386,
+      "northing": 441.588,
+      "elevation": 0.543,
+      "slope_distance": 489.214,
+      "zenith_gon": 101.057,
+      "hz_gon": 214.044
+    },
+    {
+      "point_number": "156",
+      "easting": 405.6,
+      "northing": 443.556,
+      "elevation": 0.53,
+      "slope_distance": 487.247,
+      "zenith_gon": 101.0629,
+      "hz_gon": 214.073
+    },
+    {
+      "point_number": "157",
+      "easting": 405.818,
+      "northing": 445.529,
+      "elevation": 0.523,
+      "slope_distance": 485.275,
+      "zenith_gon": 101.0682,
+      "hz_gon": 214.1019
+    },
+    {
+      "point_number": "158",
+      "easting": 406.053,
+      "northing": 447.5,
+      "elevation": 0.511,
+      "slope_distance": 483.301,
+      "zenith_gon": 101.0741,
+      "hz_gon": 214.1287
+    },
+    {
+      "point_number": "159",
+      "easting": 406.297,
+      "northing": 449.471,
+      "elevation": 0.496,
+      "slope_distance": 481.325,
+      "zenith_gon": 101.0805,
+      "hz_gon": 214.1546
+    },
+    {
+      "point_number": "160",
+      "easting": 406.55,
+      "northing": 451.437,
+      "elevation": 0.485,
+      "slope_distance": 479.352,
+      "zenith_gon": 101.0864,
+      "hz_gon": 214.1794
+    },
+    {
+      "point_number": "161",
+      "easting": 406.809,
+      "northing": 453.408,
+      "elevation": 0.472,
+      "slope_distance": 477.373,
+      "zenith_gon": 101.0927,
+      "hz_gon": 214.2038
+    },
+    {
+      "point_number": "162",
+      "easting": 407.085,
+      "northing": 455.371,
+      "elevation": 0.464,
+      "slope_distance": 475.398,
+      "zenith_gon": 101.0983,
+      "hz_gon": 214.2259
+    },
+    {
+      "point_number": "163",
+      "easting": 407.366,
+      "northing": 457.334,
+      "elevation": 0.449,
+      "slope_distance": 473.422,
+      "zenith_gon": 101.1049,
+      "hz_gon": 214.2476
+    },
+    {
+      "point_number": "164",
+      "easting": 407.657,
+      "northing": 459.296,
+      "elevation": 0.439,
+      "slope_distance": 471.445,
+      "zenith_gon": 101.1109,
+      "hz_gon": 214.2681
+    },
+    {
+      "point_number": "165",
+      "easting": 394.0,
+      "northing": 400.003,
+      "elevation": 0.897,
+      "slope_distance": 532.275,
+      "zenith_gon": 100.9291,
+      "hz_gon": 214.2845
+    },
+    {
+      "point_number": "166",
+      "easting": 394.005,
+      "northing": 402.03,
+      "elevation": 0.893,
+      "slope_distance": 530.298,
+      "zenith_gon": 100.9331,
+      "hz_gon": 214.3381
+    },
+    {
+      "point_number": "167",
+      "easting": 394.021,
+      "northing": 404.06,
+      "elevation": 0.866,
+      "slope_distance": 528.317,
+      "zenith_gon": 100.9398,
+      "hz_gon": 214.3908
+    },
+    {
+      "point_number": "168",
+      "easting": 394.047,
+      "northing": 406.087,
+      "elevation": 0.858,
+      "slope_distance": 526.336,
+      "zenith_gon": 100.9443,
+      "hz_gon": 214.4427
+    },
+    {
+      "point_number": "169",
+      "easting": 394.081,
+      "northing": 408.117,
+      "elevation": 0.848,
+      "slope_distance": 524.351,
+      "zenith_gon": 100.9491,
+      "hz_gon": 214.4941
+    },
+    {
+      "point_number": "170",
+      "easting": 394.129,
+      "northing": 410.146,
+      "elevation": 0.84,
+      "slope_distance": 522.364,
+      "zenith_gon": 100.9537,
+      "hz_gon": 214.5443
+    },
+    {
+      "point_number": "171",
+      "easting": 394.184,
+      "northing": 412.178,
+      "elevation": 0.821,
+      "slope_distance": 520.373,
+      "zenith_gon": 100.9597,
+      "hz_gon": 214.594
+    },
+    {
+      "point_number": "172",
+      "easting": 394.248,
+      "northing": 414.207,
+      "elevation": 0.809,
+      "slope_distance": 518.383,
+      "zenith_gon": 100.9648,
+      "hz_gon": 214.643
+    },
+    {
+      "point_number": "173",
+      "easting": 394.326,
+      "northing": 416.236,
+      "elevation": 0.801,
+      "slope_distance": 516.39,
+      "zenith_gon": 100.9695,
+      "hz_gon": 214.6907
+    },
+    {
+      "point_number": "174",
+      "easting": 394.414,
+      "northing": 418.265,
+      "elevation": 0.794,
+      "slope_distance": 514.396,
+      "zenith_gon": 100.9742,
+      "hz_gon": 214.7375
+    },
+    {
+      "point_number": "175",
+      "easting": 394.51,
+      "northing": 420.293,
+      "elevation": 0.78,
+      "slope_distance": 512.4,
+      "zenith_gon": 100.9797,
+      "hz_gon": 214.7837
+    },
+    {
+      "point_number": "176",
+      "easting": 394.616,
+      "northing": 422.319,
+      "elevation": 0.761,
+      "slope_distance": 510.405,
+      "zenith_gon": 100.9859,
+      "hz_gon": 214.829
+    },
+    {
+      "point_number": "177",
+      "easting": 394.731,
+      "northing": 424.346,
+      "elevation": 0.758,
+      "slope_distance": 508.406,
+      "zenith_gon": 100.9901,
+      "hz_gon": 214.8736
+    },
+    {
+      "point_number": "178",
+      "easting": 394.861,
+      "northing": 426.372,
+      "elevation": 0.742,
+      "slope_distance": 506.406,
+      "zenith_gon": 100.9961,
+      "hz_gon": 214.9167
+    },
+    {
+      "point_number": "179",
+      "easting": 394.995,
+      "northing": 428.396,
+      "elevation": 0.728,
+      "slope_distance": 504.407,
+      "zenith_gon": 101.0018,
+      "hz_gon": 214.9595
+    },
+    {
+      "point_number": "180",
+      "easting": 395.141,
+      "northing": 430.422,
+      "elevation": 0.717,
+      "slope_distance": 502.403,
+      "zenith_gon": 101.0072,
+      "hz_gon": 215.0013
+    },
+    {
+      "point_number": "181",
+      "easting": 395.298,
+      "northing": 432.445,
+      "elevation": 0.711,
+      "slope_distance": 500.4,
+      "zenith_gon": 101.012,
+      "hz_gon": 215.042
+    },
+    {
+      "point_number": "182",
+      "easting": 395.467,
+      "northing": 434.466,
+      "elevation": 0.692,
+      "slope_distance": 498.396,
+      "zenith_gon": 101.0185,
+      "hz_gon": 215.0814
+    },
+    {
+      "point_number": "183",
+      "easting": 395.643,
+      "northing": 436.492,
+      "elevation": 0.679,
+      "slope_distance": 496.386,
+      "zenith_gon": 101.0243,
+      "hz_gon": 215.1205
+    },
+    {
+      "point_number": "184",
+      "easting": 395.83,
+      "northing": 438.51,
+      "elevation": 0.669,
+      "slope_distance": 494.381,
+      "zenith_gon": 101.0297,
+      "hz_gon": 215.1582
+    },
+    {
+      "point_number": "185",
+      "easting": 396.031,
+      "northing": 440.533,
+      "elevation": 0.659,
+      "slope_distance": 492.368,
+      "zenith_gon": 101.0352,
+      "hz_gon": 215.1947
+    },
+    {
+      "point_number": "186",
+      "easting": 396.237,
+      "northing": 442.55,
+      "elevation": 0.646,
+      "slope_distance": 490.36,
+      "zenith_gon": 101.0411,
+      "hz_gon": 215.2306
+    },
+    {
+      "point_number": "187",
+      "easting": 396.453,
+      "northing": 444.571,
+      "elevation": 0.632,
+      "slope_distance": 488.346,
+      "zenith_gon": 101.0472,
+      "hz_gon": 215.2657
+    },
+    {
+      "point_number": "188",
+      "easting": 396.679,
+      "northing": 446.589,
+      "elevation": 0.621,
+      "slope_distance": 486.333,
+      "zenith_gon": 101.053,
+      "hz_gon": 215.2997
+    },
+    {
+      "point_number": "189",
+      "easting": 396.919,
+      "northing": 448.604,
+      "elevation": 0.614,
+      "slope_distance": 484.319,
+      "zenith_gon": 101.0583,
+      "hz_gon": 215.3321
+    },
+    {
+      "point_number": "190",
+      "easting": 397.169,
+      "northing": 450.615,
+      "elevation": 0.598,
+      "slope_distance": 482.307,
+      "zenith_gon": 101.0649,
+      "hz_gon": 215.3633
+    },
+    {
+      "point_number": "191",
+      "easting": 397.425,
+      "northing": 452.634,
+      "elevation": 0.59,
+      "slope_distance": 480.286,
+      "zenith_gon": 101.0704,
+      "hz_gon": 215.3944
+    },
+    {
+      "point_number": "192",
+      "easting": 397.693,
+      "northing": 454.643,
+      "elevation": 0.573,
+      "slope_distance": 478.272,
+      "zenith_gon": 101.0772,
+      "hz_gon": 215.4238
+    },
+    {
+      "point_number": "193",
+      "easting": 397.971,
+      "northing": 456.654,
+      "elevation": 0.564,
+      "slope_distance": 476.253,
+      "zenith_gon": 101.0829,
+      "hz_gon": 215.4522
+    },
+    {
+      "point_number": "194",
+      "easting": 398.257,
+      "northing": 458.667,
+      "elevation": 0.548,
+      "slope_distance": 474.231,
+      "zenith_gon": 101.0897,
+      "hz_gon": 215.4799
+    },
+    {
+      "point_number": "195",
+      "easting": 398.559,
+      "northing": 460.674,
+      "elevation": 0.539,
+      "slope_distance": 472.211,
+      "zenith_gon": 101.0956,
+      "hz_gon": 215.5055
+    },
+    {
+      "point_number": "196",
+      "easting": 406.0,
+      "northing": 400.003,
+      "elevation": 0.894,
+      "slope_distance": 529.735,
+      "zenith_gon": 100.9339,
+      "hz_gon": 212.8783
+    },
+    {
+      "point_number": "197",
+      "easting": 406.0,
+      "northing": 401.963,
+      "elevation": 0.888,
+      "slope_distance": 527.815,
+      "zenith_gon": 100.9381,
+      "hz_gon": 212.9258
+    },
+    {
+      "point_number": "198",
+      "easting": 406.022,
+      "northing": 403.939,
+      "elevation": 0.87,
+      "slope_distance": 525.876,
+      "zenith_gon": 100.9437,
+      "hz_gon": 212.9714
+    },
+    {
+      "point_number": "199",
+      "easting": 406.046,
+      "northing": 405.908,
+      "elevation": 0.86,
+      "slope_distance": 523.943,
+      "zenith_gon": 100.9484,
+      "hz_gon": 213.017
+    },
+    {
+      "point_number": "200",
+      "easting": 406.08,
+      "northing": 407.88,
+      "elevation": 0.85,
+      "slope_distance": 522.006,
+      "zenith_gon": 100.9531,
+      "hz_gon": 213.0617
+    },
+    {
+      "point_number": "201",
+      "easting": 406.122,
+      "northing": 409.85,
+      "elevation": 0.838,
+      "slope_distance": 520.069,
+      "zenith_gon": 100.9581,
+      "hz_gon": 213.1058
+    },
+    {
+      "point_number": "202",
+      "easting": 406.18,
+      "northing": 411.823,
+      "elevation": 0.824,
+      "slope_distance": 518.127,
+      "zenith_gon": 100.9635,
+      "hz_gon": 213.1484
+    },
+    {
+      "point_number": "203",
+      "easting": 406.237,
+      "northing": 413.786,
+      "elevation": 0.811,
+      "slope_distance": 516.194,
+      "zenith_gon": 100.9687,
+      "hz_gon": 213.1912
+    },
+    {
+      "point_number": "204",
+      "easting": 406.317,
+      "northing": 415.758,
+      "elevation": 0.802,
+      "slope_distance": 514.248,
+      "zenith_gon": 100.9734,
+      "hz_gon": 213.2317
+    },
+    {
+      "point_number": "205",
+      "easting": 406.397,
+      "northing": 417.727,
+      "elevation": 0.787,
+      "slope_distance": 512.306,
+      "zenith_gon": 100.979,
+      "hz_gon": 213.2725
+    },
+    {
+      "point_number": "206",
+      "easting": 406.495,
+      "northing": 419.691,
+      "elevation": 0.774,
+      "slope_distance": 510.365,
+      "zenith_gon": 100.9843,
+      "hz_gon": 213.3113
+    },
+    {
+      "point_number": "207",
+      "easting": 406.597,
+      "northing": 421.661,
+      "elevation": 0.767,
+      "slope_distance": 508.417,
+      "zenith_gon": 100.989,
+      "hz_gon": 213.35
+    },
+    {
+      "point_number": "208",
+      "easting": 406.707,
+      "northing": 423.626,
+      "elevation": 0.755,
+      "slope_distance": 506.472,
+      "zenith_gon": 100.9943,
+      "hz_gon": 213.3879
+    },
+    {
+      "point_number": "209",
+      "easting": 406.833,
+      "northing": 425.594,
+      "elevation": 0.741,
+      "slope_distance": 504.522,
+      "zenith_gon": 100.9999,
+      "hz_gon": 213.4242
+    },
+    {
+      "point_number": "210",
+      "easting": 406.963,
+      "northing": 427.556,
+      "elevation": 0.728,
+      "slope_distance": 502.577,
+      "zenith_gon": 101.0054,
+      "hz_gon": 213.4601
+    },
+    {
+      "point_number": "211",
+      "easting": 407.109,
+      "northing": 429.521,
+      "elevation": 0.716,
+      "slope_distance": 500.625,
+      "zenith_gon": 101.0109,
+      "hz_gon": 213.4944
+    },
+    {
+      "point_number": "212",
+      "easting": 407.261,
+      "northing": 431.486,
+      "elevation": 0.708,
+      "slope_distance": 498.673,
+      "zenith_gon": 101.0159,
+      "hz_gon": 213.5282
+    },
+    {
+      "point_number": "213",
+      "easting": 407.423,
+      "northing": 433.451,
+      "elevation": 0.689,
+      "slope_distance": 496.719,
+      "zenith_gon": 101.0223,
+      "hz_gon": 213.561
+    },
+    {
+      "point_number": "214",
+      "easting": 407.597,
+      "northing": 435.415,
+      "elevation": 0.676,
+      "slope_distance": 494.763,
+      "zenith_gon": 101.028,
+      "hz_gon": 213.5926
+    },
+    {
+      "point_number": "215",
+      "easting": 407.778,
+      "northing": 437.379,
+      "elevation": 0.67,
+      "slope_distance": 492.805,
+      "zenith_gon": 101.0329,
+      "hz_gon": 213.6235
+    },
+    {
+      "point_number": "216",
+      "easting": 407.967,
+      "northing": 439.334,
+      "elevation": 0.661,
+      "slope_distance": 490.855,
+      "zenith_gon": 101.0381,
+      "hz_gon": 213.6534
+    },
+    {
+      "point_number": "217",
+      "easting": 408.17,
+      "northing": 441.289,
+      "elevation": 0.645,
+      "slope_distance": 488.902,
+      "zenith_gon": 101.0444,
+      "hz_gon": 213.6817
+    },
+    {
+      "point_number": "218",
+      "easting": 408.38,
+      "northing": 443.253,
+      "elevation": 0.635,
+      "slope_distance": 486.939,
+      "zenith_gon": 101.0499,
+      "hz_gon": 213.7097
+    },
+    {
+      "point_number": "219",
+      "easting": 408.604,
+      "northing": 445.21,
+      "elevation": 0.621,
+      "slope_distance": 484.98,
+      "zenith_gon": 101.056,
+      "hz_gon": 213.7358
+    },
+    {
+      "point_number": "220",
+      "easting": 408.834,
+      "northing": 447.169,
+      "elevation": 0.607,
+      "slope_distance": 483.018,
+      "zenith_gon": 101.0621,
+      "hz_gon": 213.7615
+    },
+    {
+      "point_number": "221",
+      "easting": 409.077,
+      "northing": 449.122,
+      "elevation": 0.596,
+      "slope_distance": 481.059,
+      "zenith_gon": 101.0679,
+      "hz_gon": 213.7855
+    },
+    {
+      "point_number": "222",
+      "easting": 409.328,
+      "northing": 451.074,
+      "elevation": 0.583,
+      "slope_distance": 479.099,
+      "zenith_gon": 101.074,
+      "hz_gon": 213.8087
+    },
+    {
+      "point_number": "223",
+      "easting": 409.584,
+      "northing": 453.029,
+      "elevation": 0.576,
+      "slope_distance": 477.135,
+      "zenith_gon": 101.0793,
+      "hz_gon": 213.8315
+    },
+    {
+      "point_number": "224",
+      "easting": 409.853,
+      "northing": 454.982,
+      "elevation": 0.557,
+      "slope_distance": 475.171,
+      "zenith_gon": 101.0863,
+      "hz_gon": 213.8527
+    },
+    {
+      "point_number": "225",
+      "easting": 410.135,
+      "northing": 456.929,
+      "elevation": 0.55,
+      "slope_distance": 473.209,
+      "zenith_gon": 101.0918,
+      "hz_gon": 213.8722
+    },
+    {
+      "point_number": "226",
+      "easting": 410.421,
+      "northing": 458.876,
+      "elevation": 0.538,
+      "slope_distance": 471.247,
+      "zenith_gon": 101.098,
+      "hz_gon": 213.8913
+    },
+    {
+      "point_number": "227",
+      "easting": 395.03,
+      "northing": 405.061,
+      "elevation": 0.875,
+      "slope_distance": 527.116,
+      "zenith_gon": 100.9409,
+      "hz_gon": 214.2992
+    },
+    {
+      "point_number": "228",
+      "easting": 395.284,
+      "northing": 415.183,
+      "elevation": 0.815,
+      "slope_distance": 517.197,
+      "zenith_gon": 100.9663,
+      "hz_gon": 214.5462
+    },
+    {
+      "point_number": "229",
+      "easting": 395.793,
+      "northing": 425.298,
+      "elevation": 0.76,
+      "slope_distance": 507.235,
+      "zenith_gon": 100.9922,
+      "hz_gon": 214.7716
+    },
+    {
+      "point_number": "230",
+      "easting": 396.548,
+      "northing": 435.389,
+      "elevation": 0.695,
+      "slope_distance": 497.246,
+      "zenith_gon": 101.0204,
+      "hz_gon": 214.9746
+    },
+    {
+      "point_number": "231",
+      "easting": 397.556,
+      "northing": 445.465,
+      "elevation": 0.634,
+      "slope_distance": 487.217,
+      "zenith_gon": 101.0494,
+      "hz_gon": 215.1534
+    },
+    {
+      "point_number": "232",
+      "easting": 398.826,
+      "northing": 455.514,
+      "elevation": 0.577,
+      "slope_distance": 477.155,
+      "zenith_gon": 101.0792,
+      "hz_gon": 215.3049
+    },
+    {
+      "point_number": "233",
+      "easting": 398.481,
+      "northing": 408.03,
+      "elevation": 0.77,
+      "slope_distance": 523.462,
+      "zenith_gon": 100.9602,
+      "hz_gon": 213.9704
+    },
+    {
+      "point_number": "234",
+      "easting": 402.117,
+      "northing": 423.903,
+      "elevation": 0.682,
+      "slope_distance": 507.181,
+      "zenith_gon": 101.0021,
+      "hz_gon": 213.9587
+    },
+    {
+      "point_number": "235",
+      "easting": 401.011,
+      "northing": 442.053,
+      "elevation": 0.583,
+      "slope_distance": 489.736,
+      "zenith_gon": 101.0506,
+      "hz_gon": 214.6123
+    },
+    {
+      "point_number": "236",
+      "easting": 405.323,
+      "northing": 409.872,
+      "elevation": 0.844,
+      "slope_distance": 520.212,
+      "zenith_gon": 100.9571,
+      "hz_gon": 213.2021
+    },
+    {
+      "point_number": "237",
+      "easting": 406.309,
+      "northing": 429.582,
+      "elevation": 0.729,
+      "slope_distance": 500.735,
+      "zenith_gon": 101.009,
+      "hz_gon": 213.5955
+    },
+    {
+      "point_number": "238",
+      "easting": 408.28,
+      "northing": 449.223,
+      "elevation": 0.599,
+      "slope_distance": 481.132,
+      "zenith_gon": 101.0673,
+      "hz_gon": 213.8914
+    }
+  ]
+}

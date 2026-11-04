@@ -1,0 +1,20 @@
+{
+  "existing_points": 229,
+  "proposed_points": 229,
+  "crs": "EPSG:28992",
+  "origin": {
+    "x": 105420.0,
+    "y": 471880.0,
+    "z": 0.845
+  },
+  "street_length_m": 60.0,
+  "expected_curb": {
+    "face": 3.2,
+    "top": 3.5,
+    "height": 0.12
+  },
+  "elevation_range": [
+    0.439,
+    0.919
+  ]
+}
