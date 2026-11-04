@@ -191,6 +191,9 @@ export const api = {
       body: JSON.stringify(payload),
     }),
 
+  deleteCodeMapping: (projectId: string, mappingId: string) =>
+    request<void>(`/projects/${projectId}/code-mappings/${mappingId}`, { method: "DELETE" }),
+
   buildSurface: (projectId: string, payload: Record<string, unknown>) =>
     request<SurfacePayload>(`/projects/${projectId}/surfaces`, {
       method: "POST",

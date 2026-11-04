@@ -56,7 +56,7 @@ export default function CodeLibrary() {
     if (!mapping.id) return;
     if (!window.confirm(`Delete code ${mapping.code}?`)) return;
     try {
-      await fetch(`/api/v1/projects/${project.id}/code-mappings/${mapping.id}`, { method: "DELETE" });
+      await api.deleteCodeMapping(project.id, mapping.id);
       toast("success", `Code ${mapping.code} deleted`);
       const refreshed = await api.getProject(project.id);
       useWorkspace.setState({ project: refreshed });
