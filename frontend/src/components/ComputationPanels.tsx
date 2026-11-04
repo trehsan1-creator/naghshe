@@ -145,7 +145,7 @@ export function VolumeTab() {
 
   return (
     <div className="h-full flex flex-col min-h-0">
-      <div className="h-9 shrink-0 flex items-center gap-2 px-2 border-b border-edge">
+      <div className="min-h-9 shrink-0 flex flex-wrap items-center gap-2 px-2 py-1 border-b border-edge">
         <Scissors size={12} className="text-muted" />
         <span className="text-[10px] uppercase tracking-[0.14em] text-muted">خاک‌برداری و خاک‌ریزی</span>
         <select
@@ -155,7 +155,7 @@ export function VolumeTab() {
         >
           {surfaceOptions.map((s) => (
             <option key={s.id} value={s.id}>
-              existing: {s.name}
+              وضع موجود: {s.name}
             </option>
           ))}
         </select>
@@ -166,7 +166,7 @@ export function VolumeTab() {
         >
           {surfaceOptions.map((s) => (
             <option key={s.id} value={s.id}>
-              proposed: {s.name}
+              سطح مقایسه: {s.name}
             </option>
           ))}
         </select>
@@ -190,7 +190,7 @@ export function VolumeTab() {
           ))}
         </select>
         <button className="btn !h-6 !text-[10px]" onClick={run} disabled={!existing || !proposed || Boolean(busy)}>
-          {busy ? <Spinner /> : <Scissors size={11} />} Compute
+          {busy ? <Spinner /> : <Scissors size={11} />} محاسبه حجم
         </button>
         <span className="ms-auto text-[9px] font-mono text-muted">
           grid prismoidal method · overlap-clipped
@@ -262,8 +262,12 @@ export function VolumeTab() {
           </div>
         ) : (
           <Empty
-            title="حجمی محاسبه نشده است"
-            hint="Select the existing and proposed surfaces. Both TINs are intersected, then cut and fill are integrated on a prismoidal grid clipped to the overlap."
+            title={surfaceOptions.length < 2 ? "برای مقایسه دو سطح لازم است" : "حجمی محاسبه نشده است"}
+            hint={
+              surfaceOptions.length < 2
+                ? "از پنل سطح، فایل برداشت را انتخاب کنید و برای هر برداشت یک سطح جداگانه بسازید؛ سپس یکی را وضع موجود و دیگری را سطح مقایسه انتخاب کنید."
+                : "دو سطح را انتخاب کنید. محاسبهٔ شبکه‌ای فقط محدودهٔ هم‌پوشان دو سطح را در نظر می‌گیرد."
+            }
           />
         )}
       </div>
@@ -423,6 +427,9 @@ export function SurfaceControls() {
   const [interval, setInterval] = useState(project?.contour_interval ?? 0.1);
   const [useBreaklines, setUseBreaklines] = useState(true);
   const [majorEvery, setMajorEvery] = useState(5);
+  const [sourceFileId, setSourceFileId] = useState("");
+  const [surfaceName, setSurfaceName] = useState("");
+  const importedFiles = (project?.files ?? []).filter((file) => file.imported_points > 0);
 
   return (
     <div className="panel shrink-0">
@@ -434,6 +441,43 @@ export function SurfaceControls() {
         </span>
       </div>
       <div className="p-2.5 space-y-2">
+        <div>
+          <label className="label">فایل برداشتِ این سطح</label>
+          <select
+            className="field !h-7 !text-[10px] w-full"
+            aria-label="فایل برداشتِ این سطح"
+            value={sourceFileId}
+            onChange={(event) => {
+              const fileId = event.target.value;
+              setSourceFileId(fileId);
+              const file = importedFiles.find((item) => item.id === fileId);
+              if (file) setSurfaceName(`${file.original_filename.replace(/\.[^.]+$/, "")} · سطح`);
+              else if (fileId === "__all__") setSurfaceName("سطح ترکیبی پروژه");
+              else setSurfaceName("");
+            }}
+          >
+            <option value="">انتخاب فایل برداشت…</option>
+            {importedFiles.map((file) => (
+              <option key={file.id} value={file.id}>
+                {file.original_filename} · {fmtInt(file.imported_points)} نقطه
+              </option>
+            ))}
+            <option value="__all__">همهٔ نقاط پروژه (ترکیب فایل‌ها)</option>
+          </select>
+          <p className="text-[9px] text-muted mt-1 leading-relaxed">
+            برای مقایسهٔ دو برداشت، هر بار یک فایل را انتخاب و سطح جداگانه بسازید.
+          </p>
+        </div>
+        <div>
+          <label className="label">نام سطح (مثلاً برداشت قدیم / جدید)</label>
+          <input
+            className="field !h-7 !text-[10px] w-full"
+            aria-label="نام سطح"
+            value={surfaceName}
+            onChange={(event) => setSurfaceName(event.target.value)}
+            placeholder="نام‌گذاری سطح برای انتخاب در محاسبهٔ حجم"
+          />
+        </div>
         <div className="grid grid-cols-2 gap-2">
           <div>
             <label className="label">مرز محدوده</label>
@@ -482,6 +526,8 @@ export function SurfaceControls() {
           className="btn-primary w-full !h-7"
           onClick={() =>
             void buildSurface({
+              name: surfaceName.trim(),
+              file_id: sourceFileId && sourceFileId !== "__all__" ? sourceFileId : undefined,
               boundary_mode: boundary,
               contour_interval: interval,
               major_every: majorEvery,
@@ -489,9 +535,9 @@ export function SurfaceControls() {
               contour_method: "grid",
             })
           }
-          disabled={Boolean(busy)}
+          disabled={Boolean(busy) || !sourceFileId || !surfaceName.trim()}
         >
-          {busy ? <Spinner /> : <Layers2 size={12} />} ساخت شبکه مثلثی مقید
+          {busy ? <Spinner /> : <Layers2 size={12} />} ساخت سطح از فایل انتخاب‌شده
         </button>
         {surface && (
           <div className="grid grid-cols-2 gap-1 text-[9px] font-mono">
