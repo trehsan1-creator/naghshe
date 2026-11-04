@@ -241,6 +241,27 @@ export const api = {
     return `${BASE}/projects/${projectId}/export/dxf${qs ? `?${qs}` : ""}`;
   },
 
+  downloadDxf: async (projectId: string, opts: { surfaceId?: string | null; tin?: boolean; contours?: boolean } = {}) => {
+    const response = await fetch(api.exportDxfUrl(projectId, opts));
+    if (!response.ok) {
+      let message = `${response.status} ${response.statusText}`;
+      try {
+        const body = await response.json();
+        if (typeof body.detail === "string") message = body.detail;
+      } catch {
+        // Keep the HTTP status when the server does not return JSON.
+      }
+      throw new ApiError(response.status, message);
+    }
+    const disposition = response.headers.get("content-disposition") ?? "";
+    const utf8Name = disposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+    const plainName = disposition.match(/filename="?([^";]+)"?/i)?.[1];
+    const filename = utf8Name
+      ? decodeURIComponent(utf8Name)
+      : plainName || "surveypro_export.dxf";
+    return { blob: await response.blob(), filename };
+  },
+
   exportCsvUrl: (projectId: string) => `${BASE}/projects/${projectId}/export/points.csv`,
 
   seedDemo: () =>
