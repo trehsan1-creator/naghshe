@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Activity,
@@ -11,12 +12,35 @@ import {
 } from "lucide-react";
 import { api } from "../lib/api";
 import { useWorkspace } from "../store/workspace";
-import { StatusBadge } from "./ui";
+import { Spinner, StatusBadge } from "./ui";
 
 export default function TopBar() {
   const navigate = useNavigate();
   const project = useWorkspace((s) => s.project);
+  const toast = useWorkspace((s) => s.toast);
+  const [exportingDxf, setExportingDxf] = useState(false);
   const projectId = project?.id;
+
+  const downloadDxf = async () => {
+    if (!project) return;
+    setExportingDxf(true);
+    try {
+      const { blob, filename } = await api.downloadDxf(project.id);
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = objectUrl;
+      anchor.download = filename;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 30_000);
+      toast("success", "فایل DXF با موفقیت آمادهٔ دانلود شد.");
+    } catch (error) {
+      toast("error", `ساخت فایل DXF ناموفق بود: ${(error as Error).message}`);
+    } finally {
+      setExportingDxf(false);
+    }
+  };
 
   const nav = [
     { key: "workspace", label: "فضای کار", to: `/projects/${projectId}`, icon: Activity },
@@ -101,11 +125,12 @@ export default function TopBar() {
             </a>
             <button
               className="btn-primary"
-              onClick={() => window.open(api.exportDxfUrl(project.id), "_blank")}
-              title="خروجی DXF لایه‌بندی‌شده برای اتوکد"
+              onClick={() => void downloadDxf()}
+              disabled={exportingDxf}
+              title="ساخت و دانلود فایل DXF لایه‌بندی‌شده برای اتوکد"
             >
-              <Download size={13} />
-              <span className="hidden md:inline">خروجی DXF</span>
+              {exportingDxf ? <Spinner /> : <Download size={13} />}
+              <span className="hidden md:inline">{exportingDxf ? "در حال ساخت فایل…" : "خروجی DXF"}</span>
             </button>
           </div>
         </div>

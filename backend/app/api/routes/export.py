@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict, Optional
+from urllib.parse import quote
 
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import Response
@@ -14,6 +15,18 @@ from ...services import export as export_service
 from ..deps import ProjectDep, SessionDep
 
 router = APIRouter(prefix="/projects/{project_id}/export", tags=["export"])
+
+
+def _attachment_header(filename: str) -> str:
+    """Build an RFC 6266 header safe for Persian/Unicode project names."""
+    ascii_name = "".join(
+        ch if ch.isascii() and (ch.isalnum() or ch in "._-") else "_"
+        for ch in filename
+    ).strip("._-")
+    if not ascii_name or ascii_name.lower() in {"dxf", "surveypro.dxf"}:
+        ascii_name = "surveypro_export.dxf"
+    encoded_name = quote(filename, safe="")
+    return f"attachment; filename=\"{ascii_name}\"; filename*=UTF-8''{encoded_name}"
 
 
 @router.post("/dxf")
@@ -43,7 +56,7 @@ async def export_dxf(
         content=result["content"],
         media_type="application/dxf",
         headers={
-            "Content-Disposition": f'attachment; filename="{result["filename"]}"',
+            "Content-Disposition": _attachment_header(result["filename"]),
             "X-SurveyPro-Output-Id": (result["output"] or {}).get("id", ""),
         },
     )
@@ -73,7 +86,7 @@ async def export_dxf_get(
     return Response(
         content=result["content"],
         media_type="application/dxf",
-        headers={"Content-Disposition": f'attachment; filename="{result["filename"]}"'},
+        headers={"Content-Disposition": _attachment_header(result["filename"])},
     )
 
 

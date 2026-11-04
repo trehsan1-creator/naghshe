@@ -174,9 +174,16 @@ async def test_full_import_and_surface_workflow(client, project, sample_dir):
     assert sections.status_code == 200
     assert len(sections.json()["sections"]) == 3
 
+    # Persian project names must not break the RFC 6266 attachment response header.
+    renamed = await client.patch(
+        f"/api/v1/projects/{project_id}", json={"name": "برداشت آزمایشی"}
+    )
+    assert renamed.status_code == 200
+
     dxf = await client.get(f"/api/v1/projects/{project_id}/export/dxf")
     assert dxf.status_code == 200
     assert dxf.headers["content-type"] == "application/dxf"
+    assert "filename*=UTF-8''" in dxf.headers["content-disposition"]
     assert b"SECTION" in dxf.content[:200]
     assert b"3DFACE" in dxf.content
 
