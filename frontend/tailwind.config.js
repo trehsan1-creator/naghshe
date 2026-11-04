@@ -18,8 +18,9 @@ export default {
         danger: "#F87171",
       },
       fontFamily: {
+        // Latin monospace for coordinates / measurements, Persian UI font for everything else.
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
-        sans: ["Inter", "system-ui", "Segoe UI", "sans-serif"],
+        sans: ["Vazirmatn", "Segoe UI", "Tahoma", "system-ui", "sans-serif"],
       },
       boxShadow: { panel: "0 1px 0 0 rgba(255,255,255,0.04) inset" },
     },

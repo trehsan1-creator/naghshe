@@ -50,8 +50,8 @@ export function ProfileTab() {
     <div className="h-full flex flex-col min-h-0">
       <div className="h-9 shrink-0 flex items-center gap-2 px-2 border-b border-edge">
         <Ruler size={12} className="text-muted" />
-        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Longitudinal profile</span>
-        <div className="ml-3 flex items-end gap-2">
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">نیمرخ طولی</span>
+        <div className="ms-3 flex items-end gap-2">
           <div>
             <select
               className="field !h-6 !text-[10px]"
@@ -70,7 +70,7 @@ export function ProfileTab() {
             value={designId}
             onChange={(event) => setDesignId(event.target.value)}
           >
-            <option value="">no design surface</option>
+            <option value="">بدون سطح طراحی</option>
             {surfaceOptions
               .filter((s) => s.id !== surface?.output?.id)
               .map((s) => (
@@ -96,7 +96,7 @@ export function ProfileTab() {
             {busy ? <Spinner /> : <Ruler size={11} />} Sample
           </button>
         </div>
-        <span className="ml-auto text-[9px] font-mono text-muted">
+        <span className="ms-auto text-[9px] font-mono text-muted">
           centreline: surveyed CL linework (auto-resolved)
         </span>
       </div>
@@ -105,7 +105,7 @@ export function ProfileTab() {
           <ProfileChart profile={profile} />
         ) : (
           <Empty
-            title="No profile yet"
+            title="هنوز نیمرخی محاسبه نشده است"
             hint={
               surface
                 ? "Sample the surface along the surveyed centreline to get existing and design elevations per station."
@@ -147,9 +147,9 @@ export function VolumeTab() {
     <div className="h-full flex flex-col min-h-0">
       <div className="h-9 shrink-0 flex items-center gap-2 px-2 border-b border-edge">
         <Scissors size={12} className="text-muted" />
-        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Cut &amp; fill</span>
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">خاک‌برداری و خاک‌ریزی</span>
         <select
-          className="field !h-6 !text-[10px] font-mono max-w-[210px] ml-2"
+          className="field !h-6 !text-[10px] font-mono max-w-[210px] ms-2"
           value={existing}
           onChange={(event) => setExistingId(event.target.value)}
         >
@@ -175,8 +175,8 @@ export function VolumeTab() {
           value={method}
           onChange={(event) => setMethod(event.target.value as "grid" | "average_end_area")}
         >
-          <option value="grid">grid</option>
-          <option value="average_end_area">end area</option>
+          <option value="grid">شبکه</option>
+          <option value="average_end_area">مساحت انتهایی</option>
         </select>
         <select
           className="field !h-6 !w-20 !text-[10px]"
@@ -192,7 +192,7 @@ export function VolumeTab() {
         <button className="btn !h-6 !text-[10px]" onClick={run} disabled={!existing || !proposed || Boolean(busy)}>
           {busy ? <Spinner /> : <Scissors size={11} />} Compute
         </button>
-        <span className="ml-auto text-[9px] font-mono text-muted">
+        <span className="ms-auto text-[9px] font-mono text-muted">
           grid prismoidal method · overlap-clipped
         </span>
       </div>
@@ -202,10 +202,10 @@ export function VolumeTab() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
             <div>
               <div className="grid grid-cols-3 border border-edge rounded overflow-hidden mb-2">
-                <Stat label="Cut" value={fmt(volume.cut_m3, 2)} unit="m³" tone="lime" />
-                <Stat label="Fill" value={fmt(volume.fill_m3, 2)} unit="m³" tone="pink" />
+                <Stat label="خاک‌برداری" value={fmt(volume.cut_m3, 2)} unit="m³" tone="lime" />
+                <Stat label="خاک‌ریزی" value={fmt(volume.fill_m3, 2)} unit="m³" tone="pink" />
                 <Stat
-                  label="Net"
+                  label="خالص"
                   value={fmt(volume.net_m3, 2)}
                   unit="m³"
                   tone={volume.net_m3 >= 0 ? "cyan" : "amber"}
@@ -231,7 +231,7 @@ export function VolumeTab() {
               </div>
             </div>
             <div>
-              <div className="text-[9px] uppercase tracking-[0.14em] text-muted mb-1">Depth distribution</div>
+              <div className="text-[9px] uppercase tracking-[0.14em] text-muted mb-1">توزیع عمق</div>
               <DepthHistogram volume={volume} />
               {volume.sections && volume.sections.length > 0 && (
                 <div className="mt-2">
@@ -241,17 +241,17 @@ export function VolumeTab() {
                   <table className="w-full text-[10px] font-mono">
                     <thead>
                       <tr className="text-muted text-[9px] uppercase">
-                        <th className="text-left font-normal py-0.5">station</th>
-                        <th className="text-right font-normal">cut m²</th>
-                        <th className="text-right font-normal">fill m²</th>
+                        <th className="text-start font-normal py-0.5">ایستگاه</th>
+                        <th className="text-end font-normal">cut m²</th>
+                        <th className="text-end font-normal">fill m²</th>
                       </tr>
                     </thead>
                     <tbody>
                       {volume.sections.map((section) => (
                         <tr key={section.station} className="border-t border-edge/40">
                           <td className="py-0.5">{fmt(section.station, 1)}</td>
-                          <td className="text-right text-lime">{fmt(section.cut_area_m2, 3)}</td>
-                          <td className="text-right text-pink">{fmt(section.fill_area_m2, 3)}</td>
+                          <td className="text-end text-lime">{fmt(section.cut_area_m2, 3)}</td>
+                          <td className="text-end text-pink">{fmt(section.fill_area_m2, 3)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -262,7 +262,7 @@ export function VolumeTab() {
           </div>
         ) : (
           <Empty
-            title="No volume computed"
+            title="حجمی محاسبه نشده است"
             hint="Select the existing and proposed surfaces. Both TINs are intersected, then cut and fill are integrated on a prismoidal grid clipped to the overlap."
           />
         )}
@@ -322,9 +322,9 @@ export function CrossSectionTab() {
     <div className="h-full flex flex-col min-h-0">
       <div className="h-9 shrink-0 flex items-center gap-2 px-2 border-b border-edge">
         <Waves size={12} className="text-muted" />
-        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Cross sections</span>
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">مقاطع عرضی</span>
         <select
-          className="field !h-6 !w-24 !text-[10px] ml-2"
+          className="field !h-6 !w-24 !text-[10px] ms-2"
           value={interval}
           onChange={(event) => setInterval(Number(event.target.value))}
         >
@@ -346,7 +346,7 @@ export function CrossSectionTab() {
           value={designId}
           onChange={(event) => setDesignId(event.target.value)}
         >
-          <option value="">no design surface</option>
+          <option value="">بدون سطح طراحی</option>
           {surfaceOptions
             .filter((s) => s.id !== surface?.output?.id)
             .map((s) => (
@@ -373,7 +373,7 @@ export function CrossSectionTab() {
         >
           {busy ? <Spinner /> : <Waves size={11} />} Extract
         </button>
-        <span className="ml-auto text-[9px] font-mono text-muted">
+        <span className="ms-auto text-[9px] font-mono text-muted">
           perpendicular to the surveyed centreline · 61 samples
         </span>
       </div>
@@ -385,7 +385,7 @@ export function CrossSectionTab() {
             ))}
             {crossSections.average_end_area && (
               <div className="panel p-2 text-[10px] font-mono col-span-full">
-                <div className="text-[9px] uppercase tracking-[0.14em] text-muted mb-1">Average end area</div>
+                <div className="text-[9px] uppercase tracking-[0.14em] text-muted mb-1">روش مساحت میانگین انتهایی</div>
                 <div className="flex flex-wrap gap-4">
                   {[
                     ["cut", `${fmt(crossSections.average_end_area.cut_m3, 2)} m³`, "text-lime"],
@@ -404,7 +404,7 @@ export function CrossSectionTab() {
           </div>
         ) : (
           <Empty
-            title="No sections extracted"
+            title="مقطعی استخراج نشده است"
             hint="Extract perpendicular sections through the TIN anywhere along the alignment; optional design surface shows the cut/fill prism."
           />
         )}
@@ -429,21 +429,21 @@ export function SurfaceControls() {
       <div className="panel-title">
         <Mountain size={12} />
         Surface
-        <span className="ml-auto text-[9px] font-mono text-muted normal-case tracking-normal">
+        <span className="ms-auto text-[9px] font-mono text-muted normal-case tracking-normal">
           {fmtInt(pointCount)} pts
         </span>
       </div>
       <div className="p-2.5 space-y-2">
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="label">Boundary</label>
+            <label className="label">مرز محدوده</label>
             <select className="field !h-7 !text-[10px]" value={boundary} onChange={(e) => setBoundary(e.target.value)}>
-              <option value="concave_hull">concave hull</option>
-              <option value="convex_hull">convex hull</option>
+              <option value="concave_hull">پوستهٔ مقعر</option>
+              <option value="convex_hull">پوستهٔ محدب</option>
             </select>
           </div>
           <div>
-            <label className="label">Contour (m)</label>
+            <label className="label">فاصلهٔ منحنی میزان (متر)</label>
             <select
               className="field !h-7 !text-[10px]"
               value={interval}
@@ -459,7 +459,7 @@ export function SurfaceControls() {
         </div>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="label">Index every</label>
+            <label className="label">منحنی شاخص در هر</label>
             <select className="field !h-7 !text-[10px]" value={majorEvery} onChange={(e) => setMajorEvery(Number(e.target.value))}>
               {[4, 5, 10].map((value) => (
                 <option key={value} value={value}>
@@ -491,7 +491,7 @@ export function SurfaceControls() {
           }
           disabled={Boolean(busy)}
         >
-          {busy ? <Spinner /> : <Layers2 size={12} />} Build constrained TIN
+          {busy ? <Spinner /> : <Layers2 size={12} />} ساخت شبکه مثلثی مقید
         </button>
         {surface && (
           <div className="grid grid-cols-2 gap-1 text-[9px] font-mono">

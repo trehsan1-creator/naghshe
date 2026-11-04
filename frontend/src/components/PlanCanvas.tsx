@@ -298,34 +298,37 @@ export default function PlanCanvas() {
         }}
       />
 
-      <div className="absolute left-3 bottom-3 flex items-end gap-3 pointer-events-none select-none">
+      <div className="absolute start-3 bottom-3 flex items-end gap-3 pointer-events-none select-none" dir="rtl">
         <div className="panel px-2 py-1.5 bg-panel/90">
           <div className="flex items-center gap-1.5">
             <div className="h-1.5 border-x border-t border-muted" style={{ width: Math.min(scaleBar.pixels, 220) }} />
           </div>
-          <div className="text-[9px] font-mono text-muted mt-0.5">{scaleBar.meters} m</div>
+          <div className="text-[9px] font-mono text-muted mt-0.5">{scaleBar.meters} متر</div>
         </div>
         <div className="panel px-2 py-1.5 bg-panel/90 text-[9px] font-mono text-muted leading-relaxed">
-          <div>EPSG:{project?.crs_epsg ?? "—"} · plan view</div>
           <div>
-            1 px = {(1 / Math.pow(2, viewState.zoom)).toFixed(3)} m · {points.length} pts
+            نمای پلان · <span dir="ltr">EPSG:{project?.crs_epsg ?? "—"}</span>
+          </div>
+          <div>
+            هر پیکسل = <span dir="ltr">{(1 / Math.pow(2, viewState.zoom)).toFixed(3)}</span> متر ·{" "}
+            {points.length} نقطه
           </div>
         </div>
       </div>
 
-      <div className="absolute right-3 top-3 panel bg-panel/90 px-2 py-1 text-[9px] font-mono text-muted">
+      <div className="absolute end-3 top-3 panel bg-panel/90 px-2 py-1 text-[9px] font-mono text-muted">
         <div className="flex items-center gap-1.5">
           <span
             className="w-2 h-2 rounded-full"
             style={{ background: STATUS_HEX.APPROVED }}
           />
-          approved
-          <span className="w-2 h-2 rounded-full ml-1" style={{ background: STATUS_HEX.VALIDATED }} />
-          validated
-          <span className="w-2 h-2 rounded-full ml-1" style={{ background: STATUS_HEX.RAW }} />
-          raw
-          <span className="w-2 h-2 rounded-full ml-1" style={{ background: STATUS_HEX.REJECTED }} />
-          rejected
+          تأییدشده
+          <span className="w-2 h-2 rounded-full ms-1" style={{ background: STATUS_HEX.VALIDATED }} />
+          اعتبارسنجی
+          <span className="w-2 h-2 rounded-full ms-1" style={{ background: STATUS_HEX.RAW }} />
+          خام
+          <span className="w-2 h-2 rounded-full ms-1" style={{ background: STATUS_HEX.REJECTED }} />
+          ردشده
         </div>
       </div>
     </div>

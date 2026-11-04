@@ -68,13 +68,13 @@ export default function PointTable() {
       },
       {
         accessorKey: "point_number",
-        header: "Point",
+        header: "نقطه",
         cell: (info) => <span className="font-mono text-ink">{info.getValue() as string}</span>,
         size: 70,
       },
       {
         accessorKey: "code",
-        header: "Code",
+        header: "کد",
         cell: (info) => <span className="font-mono text-cyan/90">{(info.getValue() as string) || "—"}</span>,
         size: 96,
       },
@@ -98,13 +98,13 @@ export default function PointTable() {
       },
       {
         accessorKey: "layer",
-        header: "Layer",
+        header: "لایه",
         cell: (info) => <span className="font-mono text-[10px] text-muted">{(info.getValue() as string) || "—"}</span>,
         size: 110,
       },
       {
         accessorKey: "description",
-        header: "Description",
+        header: "شرح",
         cell: (info) => (
           <span className="text-[11px] text-muted truncate">{(info.getValue() as string) || "—"}</span>
         ),
@@ -112,7 +112,7 @@ export default function PointTable() {
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: "وضعیت",
         cell: (info) => {
           const status = info.getValue() as string;
           return <span className={`status-${status} font-mono text-[10px] uppercase`}>{status}</span>;
@@ -173,9 +173,9 @@ export default function PointTable() {
     <div className="h-full flex flex-col min-h-0">
       <div className="h-9 shrink-0 flex items-center gap-2 px-2 border-b border-edge">
         <Table2 size={12} className="text-muted" />
-        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Point database</span>
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">جدول نقاط برداشت</span>
 
-        <div className="flex items-center gap-0.5 ml-2">
+        <div className="flex items-center gap-0.5 ms-2">
           {STATUSES.map((status) => {
             const active = statusFilter.includes(status);
             const count = points.filter((p) => p.status === status).length;
@@ -196,10 +196,10 @@ export default function PointTable() {
           })}
         </div>
 
-        <div className="relative ml-2">
-          <Search size={11} className="absolute left-1.5 top-1/2 -translate-y-1/2 text-muted" />
+        <div className="relative ms-2">
+          <Search size={11} className="absolute start-1.5 top-1/2 -translate-y-1/2 text-muted" />
           <input
-            className="field !h-6 !w-44 !pl-6 !text-[10px]"
+            className="field !h-6 !w-44 !ps-6 !text-[10px]"
             placeholder="point, code, description…"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
@@ -209,29 +209,29 @@ export default function PointTable() {
           />
         </div>
 
-        <div className="ml-auto flex items-center gap-1">
-          <span className="text-[9px] font-mono text-muted mr-1">
+        <div className="ms-auto flex items-center gap-1">
+          <span className="text-[9px] font-mono text-muted me-1">
             {fmtInt(points.length)} / {fmtInt(pointsTotal)} rows
             {selectedIds.length > 0 && <span className="text-cyan"> · {selectedIds.length} selected</span>}
           </span>
           <button
             className="btn-ghost !h-6 !px-1.5 text-[10px]"
             onClick={() => void updateStatus("APPROVED", selectedIds.length ? selectedIds : undefined)}
-            title={selectedIds.length ? "Approve selected" : "Approve all filtered points"}
+            title={selectedIds.length ? "تأیید نقاط انتخاب‌شده" : "تأیید همهٔ نقاط فیلترشده"}
           >
             <CheckCheck size={11} /> Approve
           </button>
           <button
             className="btn-ghost !h-6 !px-1.5 text-[10px]"
             onClick={() => void updateStatus("VALIDATED", selectedIds.length ? selectedIds : undefined)}
-            title="Mark validated"
+            title="علامت‌گذاری به‌عنوان اعتبارسنجی‌شده"
           >
             <ShieldCheck size={11} /> Validate
           </button>
           <button
             className="btn-ghost !h-6 !px-1.5 text-[10px] hover:!text-danger"
             onClick={() => void updateStatus("REJECTED", selectedIds.length ? selectedIds : undefined)}
-            title="Reject selected"
+            title="رد نقاط انتخاب‌شده"
           >
             <XCircle size={11} /> Reject
           </button>
@@ -247,7 +247,7 @@ export default function PointTable() {
                   <th
                     key={header.id}
                     style={{ width: header.getSize() }}
-                    className="text-left font-medium text-[9px] uppercase tracking-[0.1em] text-muted px-2 py-1 whitespace-nowrap select-none cursor-pointer hover:text-ink"
+                    className="text-start font-medium text-[9px] uppercase tracking-[0.1em] text-muted px-2 py-1 whitespace-nowrap select-none cursor-pointer hover:text-ink"
                     onClick={header.column.getToggleSortingHandler()}
                   >
                     <span className="inline-flex items-center gap-0.5">
@@ -294,7 +294,7 @@ export default function PointTable() {
         <span>
           page {page + 1} / {pageCount}
         </span>
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ms-auto flex items-center gap-1">
           <button className="btn-ghost !h-5 !px-1" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
             <ChevronLeft size={12} />
           </button>

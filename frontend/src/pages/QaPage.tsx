@@ -15,7 +15,7 @@ export default function QaPage() {
   const selectPoint = useWorkspace((s) => s.selectPoint);
   const toast = useWorkspace((s) => s.toast);
   const [report, setReport] = useState<(QaReport & { points_checked?: number; tolerances?: Record<string, number> }) | null>(null);
-  const [tolerances, setTolerances] = useState({
+  const [tolerances, setتلورانس‌ها] = useState({
     duplicate_xy_tolerance: project?.duplicate_xy_tolerance ?? 0.005,
     duplicate_z_tolerance: project?.duplicate_z_tolerance ?? 0.02,
     z_mad_threshold: project?.z_mad_threshold ?? 3.5,
@@ -32,7 +32,7 @@ export default function QaPage() {
 
   useEffect(() => {
     if (!project) return;
-    setTolerances({
+    setتلورانس‌ها({
       duplicate_xy_tolerance: project.duplicate_xy_tolerance,
       duplicate_z_tolerance: project.duplicate_z_tolerance,
       z_mad_threshold: project.z_mad_threshold,
@@ -49,12 +49,12 @@ export default function QaPage() {
   }, {});
   const summary = report?.summary;
 
-  const saveTolerances = async () => {
+  const saveتلورانس‌ها = async () => {
     try {
       await api.updateProject(project.id, tolerances);
       const refreshed = await api.getProject(project.id);
       useWorkspace.setState({ project: refreshed });
-      toast("success", "Tolerances saved — re-run QA/QC to apply");
+      toast("success", "تلورانس‌ها saved — re-run QA/QC to apply");
     } catch (error) {
       toast("error", `Could not save tolerances: ${(error as Error).message}`);
     }
@@ -71,25 +71,25 @@ export default function QaPage() {
       <div className="max-w-[1500px] mx-auto p-4 space-y-3">
         <div className="flex items-end gap-3">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">Quality assurance</div>
-            <h1 className="text-lg font-semibold tracking-tight mt-0.5">QA/QC report</h1>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">تضمین کیفیت</div>
+            <h1 className="text-lg font-semibold tracking-tight mt-0.5">گزارش کنترل کیفیت</h1>
             <p className="text-[11px] text-muted mt-1">
               Axis reversal, coordinate duplicates, elevation outliers (robust MAD), local Z steps and unknown
               field codes — computed on the persisted point database.
             </p>
           </div>
-          <button className="btn-primary ml-auto" onClick={() => void runQa()} disabled={Boolean(busy)}>
+          <button className="btn-primary ms-auto" onClick={() => void runQa()} disabled={Boolean(busy)}>
             {busy ? <Spinner /> : <ShieldCheck size={13} />} Re-run QA/QC
           </button>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-2">
           {[
-            { label: "Points checked", value: fmtInt(report?.points_checked ?? points.length), tone: "text-ink" },
-            { label: "Errors", value: fmtInt(summary?.flag_counts?.error ?? 0), tone: "text-danger" },
-            { label: "Warnings", value: fmtInt(summary?.flag_counts?.warning ?? 0), tone: "text-amber" },
-            { label: "Info", value: fmtInt(summary?.flag_counts?.info ?? 0), tone: "text-muted" },
-            { label: "Flagged points", value: fmtInt(summary?.flagged_points ?? 0), tone: "text-pink" },
+            { label: "نقاط بررسی‌شده", value: fmtInt(report?.points_checked ?? points.length), tone: "text-ink" },
+            { label: "خطاها", value: fmtInt(summary?.flag_counts?.error ?? 0), tone: "text-danger" },
+            { label: "هشدارها", value: fmtInt(summary?.flag_counts?.warning ?? 0), tone: "text-amber" },
+            { label: "اطلاعات", value: fmtInt(summary?.flag_counts?.info ?? 0), tone: "text-muted" },
+            { label: "نقاط علامت‌گذاری‌شده", value: fmtInt(summary?.flagged_points ?? 0), tone: "text-pink" },
           ].map((card) => (
             <div key={card.label} className="panel px-3 py-2">
               <div className="text-[9px] uppercase tracking-[0.14em] text-muted">{card.label}</div>
@@ -100,7 +100,7 @@ export default function QaPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-3">
           <Panel
-            title="Findings"
+            title="یافته‌ها"
             icon={<AlertTriangle size={12} />}
             right={<span className="text-[9px] font-mono text-muted">{flags.length} findings</span>}
           >
@@ -114,7 +114,7 @@ export default function QaPage() {
                     {flag.metric !== null && flag.metric !== undefined && (
                       <span className="text-[9px] font-mono text-muted">metric {fmt(flag.metric, 4)}</span>
                     )}
-                    <span className="ml-auto text-[9px] font-mono text-muted">
+                    <span className="ms-auto text-[9px] font-mono text-muted">
                       {flag.point_numbers.length} pt{flag.point_numbers.length === 1 ? "" : "s"}
                     </span>
                   </div>
@@ -139,27 +139,27 @@ export default function QaPage() {
                 </li>
               ))}
               {flags.length === 0 && (
-                <li className="px-3 py-6 text-center text-[11px] text-lime">No findings — dataset passes QA/QC.</li>
+                <li className="px-3 py-6 text-center text-[11px] text-lime">موردی یافت نشد — مجموعه‌داده از کنترل کیفیت سربلند بیرون آمد.</li>
               )}
             </ul>
           </Panel>
 
           <div className="space-y-3">
-            <Panel title="Dataset statistics" icon={<Gauge size={12} />}>
+            <Panel title="آمار مجموعه‌داده" icon={<Gauge size={12} />}>
               <KeyValue
                 rows={[
-                  ["Points", fmtInt(summary?.points ?? points.length)],
-                  ["With elevation", fmtInt(summary?.with_elevation ?? 0)],
-                  ["Distinct codes", fmtInt(summary?.unique_codes ?? 0)],
-                  ["Extent X", (summary?.extent_easting ?? []).map((v) => fmt(v, 2)).join(" → ") || "—"],
-                  ["Extent Y", (summary?.extent_northing ?? []).map((v) => fmt(v, 2)).join(" → ") || "—"],
-                  ["Hull area", `${fmt(summary?.convex_hull_area_m2 ?? null, 1)} m²`],
-                  ["Density", `${fmt(summary?.point_density_per_ha ?? null, 0)} pts/ha`],
+                  ["نقاط", fmtInt(summary?.points ?? points.length)],
+                  ["دارای ارتفاع", fmtInt(summary?.with_elevation ?? 0)],
+                  ["کدهای یکتا", fmtInt(summary?.unique_codes ?? 0)],
+                  ["محدودهٔ شرقی", (summary?.extent_easting ?? []).map((v) => fmt(v, 2)).join(" → ") || "—"],
+                  ["محدودهٔ شمالی", (summary?.extent_northing ?? []).map((v) => fmt(v, 2)).join(" → ") || "—"],
+                  ["مساحت محدوده", `${fmt(summary?.convex_hull_area_m2 ?? null, 1)} m²`],
+                  ["تراکم نقاط", `${fmt(summary?.point_density_per_ha ?? null, 0)} pts/ha`],
                 ]}
               />
             </Panel>
 
-            <Panel title="Axis swap detection" icon={<ArrowUpDown size={12} />}>
+            <Panel title="تشخیص جابه‌جایی محورها" icon={<ArrowUpDown size={12} />}>
               <div className="p-2.5">
                 <div className="flex items-center gap-2">
                   <span
@@ -176,7 +176,7 @@ export default function QaPage() {
             </Panel>
 
             <Panel
-              title="Tolerances"
+              title="تلورانس‌ها"
               icon={<Gauge size={12} />}
               right={<StatusBadge status={project.dependency_state} />}
             >
@@ -197,26 +197,26 @@ export default function QaPage() {
                       step={step as number}
                       value={tolerances[key as keyof typeof tolerances]}
                       onChange={(event) =>
-                        setTolerances({ ...tolerances, [key as string]: Number(event.target.value) })
+                        setتلورانس‌ها({ ...tolerances, [key as string]: Number(event.target.value) })
                       }
                     />
                   </div>
                 ))}
-                <button className="btn w-full !h-7" onClick={() => void saveTolerances()}>
+                <button className="btn w-full !h-7" onClick={() => void saveتلورانس‌ها()}>
                   <Save size={11} /> Save tolerances
                 </button>
               </div>
             </Panel>
 
             {Object.keys(byCode).length > 0 && (
-              <Panel title="Findings by code" icon={<AlertTriangle size={12} />}>
+              <Panel title="یافته‌ها by code" icon={<AlertTriangle size={12} />}>
                 <ul className="divide-y divide-edge/50">
                   {Object.entries(byCode)
                     .sort((a, b) => b[1] - a[1])
                     .map(([code, count]) => (
                       <li key={code} className="px-2.5 py-1 flex items-center gap-2 text-[10px] font-mono">
                         <span className="text-ink/80">{code}</span>
-                        <span className="ml-auto text-muted">{count}</span>
+                        <span className="ms-auto text-muted">{count}</span>
                       </li>
                     ))}
                 </ul>

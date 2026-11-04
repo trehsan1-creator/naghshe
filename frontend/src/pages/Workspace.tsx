@@ -29,7 +29,7 @@ const Scene3D = lazy(() => import("../components/Scene3D"));
 function CanvasFallback() {
   return (
     <div className="absolute inset-0 flex items-center justify-center gap-2 text-[11px] text-muted">
-      <Spinner /> preparing renderer…
+      <Spinner /> در حال آماده‌سازی نمایشگر…
     </div>
   );
 }
@@ -37,16 +37,16 @@ function CanvasFallback() {
 type DockTab = "points" | "profile" | "volumes" | "sections";
 
 const MODES: { key: ViewMode; label: string; icon: typeof MapIcon }[] = [
-  { key: "plan", label: "Plan", icon: MapIcon },
-  { key: "gis", label: "GIS", icon: Crosshair },
+  { key: "plan", label: "پلان", icon: MapIcon },
+  { key: "gis", label: "نقشه مکانی", icon: Crosshair },
   { key: "3d", label: "3D", icon: Box },
 ];
 
 const TABS: { key: DockTab; label: string; icon: typeof Table2 }[] = [
-  { key: "points", label: "Points", icon: Table2 },
-  { key: "profile", label: "Profile", icon: Spline },
-  { key: "volumes", label: "Cut & fill", icon: Scissors },
-  { key: "sections", label: "Sections", icon: Waves },
+  { key: "points", label: "نقاط", icon: Table2 },
+  { key: "profile", label: "نیمرخ", icon: Spline },
+  { key: "volumes", label: "خاک‌برداری و خاک‌ریزی", icon: Scissors },
+  { key: "sections", label: "مقاطع", icon: Waves },
 ];
 
 export default function Workspace() {
@@ -71,7 +71,7 @@ export default function Workspace() {
 
   return (
     <div className="h-full flex flex-col min-h-0">
-      <div className="h-10 shrink-0 border-b border-edge bg-panel flex items-center gap-2 px-2">
+      <div className="workspace-toolbar h-10 shrink-0 border-b border-edge bg-panel flex items-center gap-2 px-2">
         <div className="flex items-center rounded border border-edge overflow-hidden">
           {MODES.map(({ key, label, icon: Icon }) => (
             <button
@@ -86,26 +86,26 @@ export default function Workspace() {
           ))}
         </div>
 
-        <button className="btn-ghost !h-7 !px-1.5" onClick={() => setFitKey((k) => k + 1)} title="Fit to extent">
+        <button className="btn-ghost !h-7 !px-1.5" onClick={() => setFitKey((k) => k + 1)} title="نمایش کامل محدوده">
           <Crosshair size={13} />
         </button>
 
         <div className="w-px h-5 bg-edge" />
 
         <button className="btn !h-7 !text-[10px]" onClick={() => void runQa()} disabled={Boolean(busy)}>
-          {busy ? <Spinner /> : <ShieldCheck size={12} />} Run QA/QC
-          {qa && <span className="ml-1 text-[9px] text-amber">{qa.flags.length}</span>}
+          {busy ? <Spinner /> : <ShieldCheck size={12} />} اجرای کنترل کیفیت
+          {qa && <span className="ms-1 text-[9px] text-amber">{qa.flags.length}</span>}
         </button>
 
-        <div className="flex items-center gap-1.5 text-[9px] font-mono text-muted ml-1">
+        <div className="flex items-center gap-1.5 text-[9px] font-mono text-muted ms-1">
           <span className="w-1.5 h-1.5 rounded-full bg-lime inline-block" /> {fmtInt(counts.APPROVED ?? 0)}
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block ml-1" /> {fmtInt(counts.VALIDATED ?? 0)}
-          <span className="w-1.5 h-1.5 rounded-full bg-muted inline-block ml-1" /> {fmtInt(counts.RAW ?? 0)}
-          <span className="w-1.5 h-1.5 rounded-full bg-danger inline-block ml-1" /> {fmtInt(counts.REJECTED ?? 0)}
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block ms-1" /> {fmtInt(counts.VALIDATED ?? 0)}
+          <span className="w-1.5 h-1.5 rounded-full bg-muted inline-block ms-1" /> {fmtInt(counts.RAW ?? 0)}
+          <span className="w-1.5 h-1.5 rounded-full bg-danger inline-block ms-1" /> {fmtInt(counts.REJECTED ?? 0)}
         </div>
 
         {viewMode === "3d" && (
-          <div className="flex items-center gap-1.5 ml-2">
+          <div className="flex items-center gap-1.5 ms-2">
             <span className="text-[9px] uppercase tracking-[0.1em] text-muted">Z ×</span>
             <input
               type="range"
@@ -120,28 +120,28 @@ export default function Workspace() {
           </div>
         )}
 
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="ms-auto flex items-center gap-1.5">
           <span className="text-[9px] font-mono text-muted hidden lg:flex items-center gap-1">
-            <Mountain size={11} /> {surface ? `TIN ${fmtInt(Number(surface.mesh.stats.triangles ?? 0))} tri` : "no surface"}
+            <Mountain size={11} /> {surface ? `شبکه مثلثی · ${fmtInt(Number(surface.mesh.stats.triangles ?? 0))} مثلث` : "بدون سطح"}
             <span className="text-edge">·</span>
-            <Layers size={11} /> {surfaces.length} derived
+            <Layers size={11} /> {surfaces.length} خروجی مشتق‌شده
           </span>
           <button
             className="btn-ghost !h-7 !px-1.5"
             onClick={() => setDockOpen((open) => !open)}
-            title={dockOpen ? "Collapse data dock" : "Expand data dock"}
+            title={dockOpen ? "بستن پنل داده" : "بازکردن پنل داده"}
           >
             {dockOpen ? <PanelBottomClose size={13} /> : <PanelBottomOpen size={13} />}
           </button>
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 flex">
-        <aside className="w-[248px] shrink-0 p-2 pr-1 min-h-0">
+      <div className="workspace-layout flex-1 min-h-0 flex">
+        <aside className="workspace-layers w-[248px] shrink-0 p-2 pe-1 min-h-0">
           <LayerManager />
         </aside>
 
-        <section className="flex-1 min-w-0 min-h-0 flex flex-col gap-2 p-2">
+        <section className="workspace-canvas flex-1 min-w-0 min-h-0 flex flex-col gap-2 p-2">
           <div className="panel relative flex-1 min-h-0 overflow-hidden grid-bg">
             <Suspense fallback={<CanvasFallback />}>
               {viewMode === "plan" && <PlanCanvas key={`plan-${fitKey}`} />}
@@ -157,7 +157,7 @@ export default function Workspace() {
                   <button
                     key={key}
                     onClick={() => setTab(key)}
-                    className={`h-full px-3 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.1em] border-r border-edge transition-colors ${
+                    className={`h-full px-3 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.1em] border-e border-edge transition-colors ${
                       tab === key
                         ? "text-cyan bg-cyan/5 shadow-[inset_0_-2px_0_0_#38BDF8]"
                         : "text-muted hover:text-ink"
@@ -166,8 +166,8 @@ export default function Workspace() {
                     <Icon size={11} /> {label}
                   </button>
                 ))}
-                <span className="ml-auto px-2 text-[9px] font-mono text-muted">
-                  {tab === "points" ? "editable point database" : "derived from the active surface"}
+                <span className="ms-auto px-2 text-[9px] font-mono text-muted">
+                  {tab === "points" ? "جدول نقاط قابل ویرایش" : "مشتق‌شده از سطح فعال"}
                 </span>
               </div>
               <div className="flex-1 min-h-0">
@@ -180,7 +180,7 @@ export default function Workspace() {
           )}
         </section>
 
-        <aside className="w-[306px] shrink-0 p-2 pl-1 min-h-0 flex flex-col gap-2">
+        <aside className="workspace-properties w-[306px] shrink-0 p-2 ps-1 min-h-0 flex flex-col gap-2">
           <div className="flex-1 min-h-0">
             <PropertiesPanel />
           </div>

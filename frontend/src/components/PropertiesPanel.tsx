@@ -71,7 +71,7 @@ function PointEditor() {
       point.elevation?.toFixed(3) ?? ""
     }`;
     await navigator.clipboard?.writeText(text);
-    toast("info", "Point copied to clipboard");
+    toast("info", "مختصات و مشخصات نقطه کپی شد");
   };
 
   const flags: string[] = point.qa_flags ? JSON.parse(point.qa_flags) : [];
@@ -91,10 +91,10 @@ function PointEditor() {
         <div className="p-2.5 space-y-2.5">
           <div className="grid grid-cols-2 gap-1.5">
             {[
-              ["Easting", fmt(point.easting)],
-              ["Northing", fmt(point.northing)],
-              ["Elevation", fmt(point.elevation)],
-              ["Layer", point.layer || "—"],
+              ["مختصات شرقی", fmt(point.easting)],
+              ["مختصات شمالی", fmt(point.northing)],
+              ["ارتفاع", fmt(point.elevation)],
+              ["لایه", point.layer || "—"],
             ].map(([label, value]) => (
               <div key={label} className="bg-panel2/60 border border-edge/70 rounded px-2 py-1">
                 <div className="text-[9px] uppercase tracking-[0.1em] text-muted">{label}</div>
@@ -104,7 +104,7 @@ function PointEditor() {
           </div>
 
           <div>
-            <label className="label">Field code</label>
+            <label className="label">کد برداشت</label>
             <input
               className="field font-mono"
               value={draft.code}
@@ -112,7 +112,7 @@ function PointEditor() {
             />
           </div>
           <div>
-            <label className="label">Description</label>
+            <label className="label">شرح</label>
             <input
               className="field"
               value={draft.description}
@@ -121,7 +121,7 @@ function PointEditor() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="label">Elevation (m)</label>
+              <label className="label">ارتفاع (متر)</label>
               <input
                 className="field font-mono"
                 value={draft.elevation}
@@ -130,7 +130,7 @@ function PointEditor() {
               />
             </div>
             <div>
-              <label className="label">Status</label>
+              <label className="label">وضعیت</label>
               <select
                 className="field"
                 value={draft.status}
@@ -147,7 +147,7 @@ function PointEditor() {
 
           {flags.length > 0 && (
             <div className="rounded border border-amber/30 bg-amber/5 px-2 py-1.5">
-              <div className="text-[9px] uppercase tracking-[0.12em] text-amber/80 mb-1">QA flags</div>
+              <div className="text-[9px] uppercase tracking-[0.12em] text-amber/80 mb-1">پرچم‌های کنترل کیفیت</div>
               <div className="flex flex-wrap gap-1">
                 {flags.map((flag) => (
                   <span key={flag} className="chip !text-[9px] text-amber border-amber/30">
@@ -162,7 +162,7 @@ function PointEditor() {
             <button className="btn-primary flex-1" onClick={() => void save()} disabled={!dirty}>
               <Save size={12} /> Save
             </button>
-            <button className="btn-ghost" onClick={() => void copy()} title="Copy as TSV">
+            <button className="btn-ghost" onClick={() => void copy()} title="کپی به‌صورت TSV">
               <ClipboardCopy size={13} />
             </button>
           </div>
@@ -193,14 +193,14 @@ function PointEditor() {
         </div>
       </Panel>
 
-      <Panel title="Data lineage" className="flex-1 min-h-0" icon={<Info size={12} />}>
+      <Panel title="تبار داده" className="flex-1 min-h-0" icon={<Info size={12} />}>
         <div className="px-3 py-2 text-[10px] text-muted leading-relaxed space-y-1.5">
           <p>
             This point sits in the <span className="text-cyan">{point.status}</span> tier. Edits bump the
             version and mark every dependent surface, volume, profile and DXF export{" "}
-            <span className="text-amber">OUTDATED</span> until rebuilt.
+            <span className="text-amber">منسوخ</span> تا زمان بازسازی.
           </p>
-          <p>RAW upload data is never overwritten — corrections live on the processed record.</p>
+          <p>دادهٔ خام فایل ورودی هرگز بازنویسی نمی‌شود؛ اصلاحات فقط روی رکورد پردازش‌شده اعمال می‌شوند.</p>
         </div>
       </Panel>
     </>
@@ -218,38 +218,38 @@ function ProjectFacts() {
 
   return (
     <>
-      <Panel title="Project" icon={<Database size={12} />}>
+      <Panel title="پروژه" icon={<Database size={12} />}>
         <KeyValue
           rows={[
-            ["Name", project.name],
-            ["Code", project.code || "—"],
-            ["Client", project.client || "—"],
-            ["Location", project.location || "—"],
+            ["نام", project.name],
+            ["کد پروژه", project.code || "—"],
+            ["کارفرما", project.client || "—"],
+            ["موقعیت", project.location || "—"],
             ["CRS", `EPSG:${project.crs_epsg}`],
-            ["Datum", project.crs?.name ?? project.vertical_datum],
-            ["Vertical", project.vertical_datum],
-            ["Units", `${project.linear_unit} / ${project.angle_unit}`],
-            ["Points", fmtInt(counters?.points_total ?? pointsTotal)],
+            ["مبنای ارتفاعی", project.crs?.name ?? project.vertical_datum],
+            ["قائم", project.vertical_datum],
+            ["واحدها", `${project.linear_unit} / ${project.angle_unit}`],
+            ["نقاط", fmtInt(counters?.points_total ?? pointsTotal)],
           ]}
         />
       </Panel>
 
-      <Panel title="Tolerances" icon={<SlidersHorizontal size={12} />}>
+      <Panel title="تلورانس‌ها" icon={<SlidersHorizontal size={12} />}>
         <KeyInfo project={project} />
       </Panel>
 
       {surface && (
-        <Panel title="Surface statistics" className="min-h-0" icon={<Database size={12} />}>
+        <Panel title="آمار سطح" className="min-h-0" icon={<Database size={12} />}>
           <KeyValue
             rows={[
-              ["Engine", String(surface.mesh.stats.engine ?? "triangle")],
-              ["Triangles", fmtInt(Number(surface.mesh.stats.triangles ?? 0))],
-              ["Vertices", fmtInt(Number(surface.mesh.stats.vertices ?? 0))],
-              ["Area", `${fmt(Number(surface.stats.area_m2 ?? 0), 2)} m²`],
+              ["موتور", String(surface.mesh.stats.engine ?? "triangle")],
+              ["مثلث‌ها", fmtInt(Number(surface.mesh.stats.triangles ?? 0))],
+              ["رأس‌ها", fmtInt(Number(surface.mesh.stats.vertices ?? 0))],
+              ["مساحت", `${fmt(Number(surface.stats.area_m2 ?? 0), 2)} m²`],
               ["Z range", `${fmt(Number(surface.stats.min_z ?? 0), 3)} → ${fmt(Number(surface.stats.max_z ?? 0), 3)}`],
-              ["Constraints", fmtInt(Number(surface.mesh.stats.constraint_edges ?? 0))],
-              ["Contours", fmtInt(surface.contours.length)],
-              ["Boundary", String(surface.mesh.boundary_source ?? "—")],
+              ["قیود", fmtInt(Number(surface.mesh.stats.constraint_edges ?? 0))],
+              ["منحنی‌های میزان", fmtInt(surface.contours.length)],
+              ["مرز", String(surface.mesh.boundary_source ?? "—")],
             ]}
           />
         </Panel>
@@ -260,17 +260,17 @@ function ProjectFacts() {
           {qa ? (
             <KeyValue
               rows={[
-                ["Flags", fmtInt(qa.flags.length)],
-                ["Errors", String(qa.summary.flag_counts?.error ?? 0)],
-                ["Warnings", String(qa.summary.flag_counts?.warning ?? 0)],
-                ["Flagged pts", String(qa.summary.flagged_points ?? 0)],
-                ["Axis swap", qa.summary.axis_swap?.swap_suspected ? "suspected" : "none"],
-                ["Extent X", (qa.summary.extent_easting ?? []).map((v) => fmt(v, 1)).join(" → ") || "—"],
+                ["پرچم‌ها", fmtInt(qa.flags.length)],
+                ["خطاها", String(qa.summary.flag_counts?.error ?? 0)],
+                ["هشدارها", String(qa.summary.flag_counts?.warning ?? 0)],
+                ["نقاط علامت‌دار", String(qa.summary.flagged_points ?? 0)],
+                ["جابه‌جایی محورها", qa.summary.axis_swap?.swap_suspected ? "محتمل" : "هیچ‌کدام"],
+                ["محدودهٔ شرقی", (qa.summary.extent_easting ?? []).map((v) => fmt(v, 1)).join(" → ") || "—"],
               ]}
             />
           ) : (
             <Empty
-              title="Nothing selected"
+              title="نقطه‌ای انتخاب نشده است"
               hint="Click a point on the canvas or in the table to inspect and edit it. Run QA/QC to populate validation flags."
             />
           )}
@@ -284,13 +284,13 @@ function KeyInfo({ project }: { project: NonNullable<ReturnType<typeof useWorksp
   return (
     <KeyValue
       rows={[
-        ["Dup XY", `${fmt(project.duplicate_xy_tolerance, 3)} m`],
-        ["Dup Z", `${fmt(project.duplicate_z_tolerance, 3)} m`],
+        ["تکرار افقی", `${fmt(project.duplicate_xy_tolerance, 3)} m`],
+        ["تکرار ارتفاعی", `${fmt(project.duplicate_z_tolerance, 3)} m`],
         ["Z MAD", `×${fmt(project.z_mad_threshold, 2)}`],
         ["Z step", `${fmt(project.local_z_step_threshold, 2)} m`],
-        ["Boundary", project.tin_boundary_mode],
+        ["مرز", project.tin_boundary_mode],
         ["Contour int.", `${fmt(project.contour_interval, 2)} m`],
-        ["Breaklines", (project.breakline_codes ?? []).join(", ") || "—"],
+        ["خطوط شکست", (project.breakline_codes ?? []).join(", ") || "—"],
       ]}
     />
   );

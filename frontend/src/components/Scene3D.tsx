@@ -231,7 +231,7 @@ export default function Scene3D() {
   if (!frame) {
     return (
       <div className="absolute inset-0 flex items-center justify-center text-xs text-muted">
-        No points to render — import a survey file first.
+        نقطه‌ای برای نمایش نیست — ابتدا فایل برداشت را وارد کنید.
       </div>
     );
   }
@@ -265,28 +265,30 @@ export default function Scene3D() {
         <axesHelper args={[Math.max(frame.span * 0.12, 2)]} />
       </Canvas>
 
-      <div className="absolute top-3 left-3 panel bg-panel/90 px-2.5 py-1.5 text-[9px] font-mono text-muted leading-relaxed pointer-events-none">
-        <div className="text-cyan">3D surface · {surface ? surface.mesh.stats.engine : "points only"}</div>
+      <div className="absolute top-3 start-3 panel bg-panel/90 px-2.5 py-1.5 text-[9px] font-mono text-muted leading-relaxed pointer-events-none">
+        <div className="text-cyan">
+          سطح سه‌بعدی · {surface ? `موتور ${surface.mesh.stats.engine}` : "فقط نقاط"}
+        </div>
         <div>
           {surface
-            ? `${surface.mesh.stats.triangles} triangles · ${surface.contours.length} contours`
-            : `${pointCount} points`}
+            ? `${surface.mesh.stats.triangles} مثلث · ${surface.contours.length} خط تراز`
+            : `${pointCount} نقطه`}
         </div>
-        <div>Z ×{exaggeration.toFixed(1)} · drag orbit · wheel zoom</div>
+        <div>اغراق ارتفاع ×{exaggeration.toFixed(1)} · چرخش با درگ · زوم با اسکرول</div>
       </div>
 
-      <div className="absolute bottom-3 left-3 panel bg-panel/90 px-2.5 py-1.5 flex items-center gap-3 text-[9px] font-mono text-muted">
+      <div className="absolute bottom-3 start-3 panel bg-panel/90 px-2.5 py-1.5 flex items-center gap-3 text-[9px] font-mono text-muted">
         <span className="flex items-center gap-1">
-          <span className="w-2 h-2 rounded-sm" style={{ background: "#38BDF8" }} /> low
+          <span className="w-2 h-2 rounded-sm" style={{ background: "#38BDF8" }} /> کمینه ارتفاع
         </span>
         <span className="flex items-center gap-1">
-          <span className="w-2 h-2 rounded-sm" style={{ background: "#A3E635" }} /> mid
+          <span className="w-2 h-2 rounded-sm" style={{ background: "#A3E635" }} /> میانه
         </span>
         <span className="flex items-center gap-1">
-          <span className="w-2 h-2 rounded-sm" style={{ background: "#F472B6" }} /> high
+          <span className="w-2 h-2 rounded-sm" style={{ background: "#F472B6" }} /> بیشینه
         </span>
         <span className="text-edge">|</span>
-        <span>Y axis = elevation (m × {exaggeration.toFixed(1)})</span>
+        <span>محور قائم = ارتفاع (متر × {exaggeration.toFixed(1)})</span>
       </div>
     </div>
   );

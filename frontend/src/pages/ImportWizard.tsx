@@ -18,12 +18,12 @@ import type { ColumnMapping, Issue, PointStatus, QaFlag } from "../lib/types";
 type Role = "point_number" | "easting" | "northing" | "elevation" | "code" | "description";
 
 const ROLES: { key: Role; label: string; required?: boolean }[] = [
-  { key: "point_number", label: "Point number", required: true },
-  { key: "easting", label: "Easting (X)", required: true },
-  { key: "northing", label: "Northing (Y)", required: true },
-  { key: "elevation", label: "Elevation (Z)" },
-  { key: "code", label: "Field code" },
-  { key: "description", label: "Description" },
+  { key: "point_number", label: "شماره نقطه", required: true },
+  { key: "easting", label: "مختصات شرقی (X)", required: true },
+  { key: "northing", label: "مختصات شمالی (Y)", required: true },
+  { key: "elevation", label: "ارتفاع (Z)" },
+  { key: "code", label: "کد برداشت" },
+  { key: "description", label: "شرح" },
 ];
 
 export default function ImportWizard() {
@@ -92,14 +92,13 @@ export default function ImportWizard() {
       <div className="max-w-[1500px] mx-auto p-4 space-y-3">
         <div className="flex items-end gap-3">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">Step 1 · ingest</div>
-            <h1 className="text-lg font-semibold tracking-tight mt-0.5">Import field data</h1>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">گام ۱ · ورود داده</div>
+            <h1 className="text-lg font-semibold tracking-tight mt-0.5">ورود داده‌های برداشت</h1>
             <p className="text-[11px] text-muted mt-1">
-              Total-station TXT/CSV with automatic encoding, delimiter and column detection, or a Leica
-              GSI-8/16 export converted through polar → rectangular.
+              فایل‌های TXT/CSV توتال‌استیشن با تشخیص خودکار کدگذاری، جداکننده و ستون‌ها؛ همچنین خروجی Leica GSI-8/16 با تبدیل مختصات قطبی به قائم.
             </p>
           </div>
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ms-auto flex items-center gap-2">
             {upload && (
               <button
                 className="btn"
@@ -108,11 +107,11 @@ export default function ImportWizard() {
                   setSwapXy(false);
                 }}
               >
-                <RefreshCw size={12} /> Start over
+                <RefreshCw size={12} /> شروع مجدد
               </button>
             )}
             <button className="btn" onClick={() => navigate(`/projects/${project?.id}`)}>
-              Workspace <ArrowRight size={12} />
+              فضای کار <ArrowRight size={12} />
             </button>
           </div>
         </div>
@@ -134,7 +133,7 @@ export default function ImportWizard() {
             }}
           >
             <UploadCloud size={30} className="text-cyan/80" />
-            <div className="text-sm">Drop a survey file here</div>
+            <div className="text-sm">فایل برداشت را اینجا رها کنید</div>
             <div className="text-[11px] text-muted">
               .txt · .csv · .dat · .gsi — up to 25 MB, raw bytes are stored unmodified
             </div>
@@ -146,13 +145,13 @@ export default function ImportWizard() {
               onChange={(event) => void handleFiles(event.target.files)}
             />
             <button className="btn-primary mt-1" onClick={() => fileInput.current?.click()} disabled={Boolean(busy)}>
-              {busy ? <Spinner /> : <FileText size={13} />} Choose file
+              {busy ? <Spinner /> : <FileText size={13} />} انتخاب فایل
             </button>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-4 w-full max-w-3xl">
               {[
-                ["TXT · CSV", "Whitespace, comma, semicolon, tab or pipe delimited; header detection."],
-                ["Leica GSI", "GSI-8 and GSI-16 blocks, station + target words, gon/degree angles."],
-                ["QA on upload", "Axis reversal, duplicates, Z outliers and unknown codes flagged before commit."],
+                ["TXT · CSV", "Whitespace, comma, semicolon, tab or pipe delimited; سرستون detection."],
+                ["Leica GSI", "بلوک‌های GSI-8 و GSI-16، ایستگاه و هدف، زاویه برحسب گرادیان یا درجه."],
+                ["کنترل کیفیت هنگام ورود", "جابه‌جایی محورها، نقاط تکراری، داده‌های پرت ارتفاع و کدهای ناشناخته پیش از ثبت مشخص می‌شوند."],
               ].map(([title, note]) => (
                 <div key={title} className="panel bg-panel2/50 p-2.5">
                   <div className="text-[10px] uppercase tracking-[0.12em] text-cyan">{title}</div>
@@ -167,18 +166,18 @@ export default function ImportWizard() {
         {upload && analysis && (
           <>
             <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-3">
-              <Panel title="Detected format" icon={<Wand2 size={12} />}>
+              <Panel title="قالب شناسایی‌شده" icon={<Wand2 size={12} />}>
                 <div className="p-2.5 grid grid-cols-2 md:grid-cols-3 gap-1.5 text-[10px] font-mono">
                   {[
-                    ["file", upload.file.original_filename],
-                    ["format", analysis.format],
-                    ["encoding", analysis.encoding],
-                    ["delimiter", analysis.delimiter_label ?? analysis.delimiter ?? "—"],
-                    ["header", analysis.header_detected ? analysis.header_tokens.join(" ") || "yes" : "none"],
-                    ["rows", fmtInt(analysis.row_count)],
-                    ["tokens/row", String(analysis.token_count_mode ?? "—")],
-                    ["size", `${(upload.file.size_bytes / 1024).toFixed(1)} kB`],
-                    ["sha256", `${upload.file.sha256.slice(0, 12)}…`],
+                    ["فایل", upload.file.original_filename],
+                    ["قالب", analysis.format],
+                    ["کدگذاری", analysis.encoding],
+                    ["جداکننده", analysis.delimiter_label ?? analysis.delimiter ?? "—"],
+                    ["سرستون", analysis.header_detected ? analysis.header_tokens.join(" ") || "yes" : "none"],
+                    ["ردیف‌ها", fmtInt(analysis.row_count)],
+                    ["فیلد در هر ردیف", String(analysis.token_count_mode ?? "—")],
+                    ["حجم فایل", `${(upload.file.size_bytes / 1024).toFixed(1)} kB`],
+                    ["هش SHA-256", `${upload.file.sha256.slice(0, 12)}…`],
                   ].map(([label, value]) => (
                     <div key={label} className="bg-panel2/60 border border-edge/70 rounded px-2 py-1">
                       <div className="text-[9px] uppercase tracking-[0.1em] text-muted">{label}</div>
@@ -200,11 +199,11 @@ export default function ImportWizard() {
               </Panel>
 
               <Panel
-                title="Column mapper"
+                title="نگاشت ستون‌ها"
                 icon={<ShieldCheck size={12} />}
                 right={
                   <span className={`text-[9px] font-mono ${mappingReady ? "text-lime" : "text-amber"}`}>
-                    {mappingReady ? "mapping complete" : "assign X / Y / point id"}
+                    {mappingReady ? "نگاشت کامل است" : "ستون‌های X، Y و شناسهٔ نقطه را تعیین کنید"}
                   </span>
                 }
               >
@@ -212,11 +211,11 @@ export default function ImportWizard() {
                   <table className="w-full text-[10px]">
                     <thead className="sticky top-0 bg-panel2">
                       <tr className="text-[9px] uppercase tracking-[0.1em] text-muted">
-                        <th className="text-left font-normal px-2 py-1">#</th>
-                        <th className="text-left font-normal px-2 py-1">sample</th>
-                        <th className="text-left font-normal px-2 py-1">profile</th>
-                        <th className="text-left font-normal px-2 py-1 w-32">role</th>
-                        <th className="text-left font-normal px-2 py-1 w-16">conf</th>
+                        <th className="text-start font-normal px-2 py-1">#</th>
+                        <th className="text-start font-normal px-2 py-1">نمونه</th>
+                        <th className="text-start font-normal px-2 py-1">نوع داده</th>
+                        <th className="text-start font-normal px-2 py-1 w-32">نقش</th>
+                        <th className="text-start font-normal px-2 py-1 w-16">اطمینان</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -248,7 +247,7 @@ export default function ImportWizard() {
                                 value={role}
                                 onChange={(event) => assign(column.index, event.target.value as Role | "ignore")}
                               >
-                                <option value="ignore">— ignore —</option>
+                                <option value="ignore">— نادیده‌گرفتن —</option>
                                 {ROLES.map((r) => (
                                   <option key={r.key} value={r.key}>
                                     {r.label}
@@ -293,9 +292,9 @@ export default function ImportWizard() {
                     />
                     swap X ⇄ Y
                   </label>
-                  <span className="text-[9px] text-muted font-mono ml-auto">
+                  <span className="text-[9px] text-muted font-mono ms-auto">
                     {analysis.points.length} parsed
-                    {analysis.preview_truncated ? " (preview truncated)" : ""}
+                    {analysis.preview_truncated ? " (پیش‌نمایش کوتاه شده)" : ""}
                   </span>
                 </div>
               </Panel>
@@ -303,20 +302,20 @@ export default function ImportWizard() {
 
             <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] gap-3">
               <Panel
-                title="Preview"
+                title="پیش‌نمایش"
                 icon={<FileText size={12} />}
-                right={<span className="text-[9px] font-mono text-muted">{fmtInt(analysis.points.length)} rows</span>}
+                right={<span className="text-[9px] font-mono text-muted">{fmtInt(analysis.points.length)} ردیف‌ها</span>}
               >
                 <div className="max-h-[300px] overflow-auto">
                   <table className="w-full text-[10px]">
                     <thead className="sticky top-0 bg-panel2 z-10">
                       <tr className="text-[9px] uppercase tracking-[0.1em] text-muted">
-                        <th className="text-left font-normal px-2 py-1">pt</th>
-                        <th className="text-left font-normal px-2 py-1">code</th>
-                        <th className="text-right font-normal px-2 py-1">X</th>
-                        <th className="text-right font-normal px-2 py-1">Y</th>
-                        <th className="text-right font-normal px-2 py-1">Z</th>
-                        <th className="text-left font-normal px-2 py-1">qa</th>
+                        <th className="text-start font-normal px-2 py-1">نقطه</th>
+                        <th className="text-start font-normal px-2 py-1">کد</th>
+                        <th className="text-end font-normal px-2 py-1">X</th>
+                        <th className="text-end font-normal px-2 py-1">Y</th>
+                        <th className="text-end font-normal px-2 py-1">Z</th>
+                        <th className="text-start font-normal px-2 py-1">کیفیت</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -326,9 +325,9 @@ export default function ImportWizard() {
                           <tr key={`${point.point_number}-${point.line_no}`} className="border-t border-edge/40 font-mono">
                             <td className="px-2 py-[2px] text-ink/90">{point.point_number}</td>
                             <td className="px-2 py-[2px] text-cyan/90">{point.code || "—"}</td>
-                            <td className="px-2 py-[2px] text-right tabular">{fmt(point.easting)}</td>
-                            <td className="px-2 py-[2px] text-right tabular">{fmt(point.northing)}</td>
-                            <td className="px-2 py-[2px] text-right tabular">{fmt(point.elevation)}</td>
+                            <td className="px-2 py-[2px] text-end tabular">{fmt(point.easting)}</td>
+                            <td className="px-2 py-[2px] text-end tabular">{fmt(point.northing)}</td>
+                            <td className="px-2 py-[2px] text-end tabular">{fmt(point.elevation)}</td>
                             <td className="px-2 py-[2px]">
                               <SeverityDot severity={severity} />
                             </td>
@@ -342,13 +341,13 @@ export default function ImportWizard() {
 
               <div className="space-y-3 min-w-0">
                 <Panel
-                  title="QA/QC warnings"
+                  title="هشدارهای کنترل کیفیت"
                   icon={<AlertTriangle size={12} />}
                   right={
                     <span className="text-[9px] font-mono">
-                      <span className="text-danger">{severityCounts.error ?? 0} err</span>
+                      <span className="text-danger">{severityCounts.error ?? 0} خطا</span>
                       {" · "}
-                      <span className="text-amber">{severityCounts.warning ?? 0} warn</span>
+                      <span className="text-amber">{severityCounts.warning ?? 0} هشدار</span>
                       {" · "}
                       <span className="text-muted">{severityCounts.info ?? 0} info</span>
                     </span>
@@ -360,7 +359,7 @@ export default function ImportWizard() {
                         <div className="flex items-center gap-1.5">
                           <SeverityDot severity={flag.severity} />
                           <span className="text-[10px] font-mono uppercase text-ink/80">{flag.code}</span>
-                          <span className={`ml-auto text-[9px] font-mono sev-${flag.severity}`}>{flag.severity}</span>
+                          <span className={`ms-auto text-[9px] font-mono sev-${flag.severity}`}>{flag.severity}</span>
                         </div>
                         <div className="text-[10px] text-muted leading-relaxed mt-0.5">{flag.message}</div>
                         {flag.point_numbers.length > 0 && (
@@ -376,41 +375,41 @@ export default function ImportWizard() {
                     ))}
                     {flags.length === 0 && (
                       <li className="px-2.5 py-2 text-[10px] text-lime flex items-center gap-1.5">
-                        <CheckCircle2 size={11} /> No QA findings on this preview.
+                        <CheckCircle2 size={11} /> در این پیش‌نمایش موردی برای کنترل کیفیت یافت نشد.
                       </li>
                     )}
                   </ul>
                   {issueList.length > 0 && (
                     <div className="px-2.5 py-1.5 border-t border-edge text-[9px] text-muted">
-                      {issueList.length} parser note(s): {issueList.slice(0, 2).map((issue) => issue.code).join(", ")}
+                      {issueList.length} یادداشت تجزیه: {issueList.slice(0, 2).map((issue) => issue.code).join(", ")}
                     </div>
                   )}
                 </Panel>
 
-                <Panel title="Commit" icon={<ShieldCheck size={12} />}>
+                <Panel title="ثبت داده‌ها" icon={<ShieldCheck size={12} />}>
                   <div className="p-2.5 space-y-2">
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <label className="label">Initial tier</label>
+                        <label className="label">وضعیت اولیه</label>
                         <select
                           className="field !h-7 !text-[10px]"
                           value={commitStatus}
                           onChange={(event) => setCommitStatus(event.target.value as PointStatus)}
                         >
-                          <option value="RAW">RAW — untrusted upload</option>
-                          <option value="VALIDATED">VALIDATED — QA passed</option>
-                          <option value="APPROVED">APPROVED — signed off</option>
+                          <option value="RAW">خام — دادهٔ ورودی بررسی‌نشده</option>
+                          <option value="VALIDATED">اعتبارسنجی‌شده — کنترل کیفیت انجام شده</option>
+                          <option value="APPROVED">تأییدشده — تأیید نهایی</option>
                         </select>
                       </div>
                       <div>
-                        <label className="label">Duplicate point numbers</label>
+                        <label className="label">شماره‌های تکراری نقاط</label>
                         <select
                           className="field !h-7 !text-[10px]"
                           value={duplicatePolicy}
                           onChange={(event) => setDuplicatePolicy(event.target.value as "skip" | "replace")}
                         >
-                          <option value="skip">skip duplicates</option>
-                          <option value="replace">replace existing</option>
+                          <option value="skip">ردکردن نقاط تکراری</option>
+                          <option value="replace">جایگزینی موارد موجود</option>
                         </select>
                       </div>
                     </div>
@@ -419,7 +418,7 @@ export default function ImportWizard() {
                         ["parsed", String(analysis.stats.parsed ?? analysis.points.length)],
                         ["skipped", String(analysis.stats.skipped ?? 0)],
                         ["dupes", String(analysis.stats.duplicate_point_numbers ?? 0)],
-                        ["with Z", String(analysis.stats.with_elevation ?? "—")],
+                        ["همراه با Z", String(analysis.stats.with_elevation ?? "—")],
                         ["codes", String(analysis.qa?.summary?.unique_codes ?? "—")],
                         ["hull m²", fmt(analysis.qa?.summary?.convex_hull_area_m2 ?? null, 1)],
                       ].map(([label, value]) => (
@@ -437,31 +436,31 @@ export default function ImportWizard() {
                         if (ok) navigate(`/projects/${project?.id}`);
                       }}
                     >
-                      {busy ? <Spinner /> : <CheckCircle2 size={13} />} Commit {fmtInt(analysis.points.length)} points
+                      {busy ? <Spinner /> : <CheckCircle2 size={13} />} ثبت {fmtInt(analysis.points.length)} نقطه
                     </button>
                     <div className="text-[9px] text-muted leading-relaxed">
-                      Committing writes the point database and re-runs QA/QC. The original upload stays
-                      byte-identical in <span className="font-mono text-muted/80">project_files</span> with
-                      its SHA-256 checksum.
+                      با ثبت writes the point database and re-runs QA/QC. The original upload stays
+                      و بایت‌به‌بایت در <span className="font-mono text-muted/80">project_files</span> همراه با
+                      هش SHA-256 آن نگهداری می‌شود.
                     </div>
                   </div>
                 </Panel>
               </div>
             </div>
 
-            <Panel title="Previously imported files" icon={<FileText size={12} />}>
+            <Panel title="فایل‌های واردشدهٔ پیشین" icon={<FileText size={12} />}>
               <ul className="divide-y divide-edge/50">
                 {(project?.files ?? []).map((file) => (
                   <li key={file.id} className="px-2.5 py-1.5 flex items-center gap-2 text-[10px]">
                     <FileText size={11} className="text-muted" />
                     <span className="font-mono text-ink/90 truncate">{file.original_filename}</span>
                     <StatusBadge status={file.status} />
-                    <span className="text-muted font-mono">{fmtInt(file.row_count)} rows</span>
-                    <span className="text-muted font-mono ml-auto">{fmtInt(file.imported_points)} pts</span>
+                    <span className="text-muted font-mono">{fmtInt(file.row_count)} ردیف‌ها</span>
+                    <span className="text-muted font-mono ms-auto">{fmtInt(file.imported_points)} pts</span>
                   </li>
                 ))}
                 {(project?.files ?? []).length === 0 && (
-                  <li className="px-2.5 py-2 text-[10px] text-muted">No files imported yet.</li>
+                  <li className="px-2.5 py-2 text-[10px] text-muted">هنوز فایلی وارد نشده است.</li>
                 )}
               </ul>
             </Panel>
@@ -470,7 +469,7 @@ export default function ImportWizard() {
 
         {upload && !analysis && (
           <div className="panel p-6 text-[11px] text-muted flex items-center gap-2">
-            <Spinner /> Parsing {upload.file.original_filename}…
+            <Spinner /> در حال پردازش {upload.file.original_filename}…
           </div>
         )}
       </div>

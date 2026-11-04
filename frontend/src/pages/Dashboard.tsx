@@ -20,22 +20,22 @@ import { Modal, Panel, StatusBadge, fmtInt, Spinner } from "../components/ui";
 import type { Project } from "../lib/types";
 
 const CRS_CHOICES = [
-  { epsg: 28992, label: "EPSG:28992 — RD New / NAP (Netherlands)" },
-  { epsg: 25831, label: "EPSG:25831 — ETRS89 / UTM 31N" },
-  { epsg: 32631, label: "EPSG:32631 — WGS 84 / UTM 31N" },
-  { epsg: 27700, label: "EPSG:27700 — OSGB36 / British National Grid" },
-  { epsg: 2056, label: "EPSG:2056 — CH1903+ / LV95 (Switzerland)" },
-  { epsg: 3857, label: "EPSG:3857 — Web Mercator" },
-  { epsg: 4326, label: "EPSG:4326 — WGS 84 geographic" },
+  { epsg: 28992, label: "EPSG:28992 — شبکه RD جدید / مبنای ارتفاعی NAP (هلند)" },
+  { epsg: 25831, label: "EPSG:25831 — سامانه ETRS89 / UTM زون ۳۱ شمالی" },
+  { epsg: 32631, label: "EPSG:32631 — سامانه WGS 84 / UTM زون ۳۱ شمالی" },
+  { epsg: 27700, label: "EPSG:27700 — شبکه ملی بریتانیا OSGB36" },
+  { epsg: 2056, label: "EPSG:2056 — سامانه CH1903+ / LV95 (سوئیس)" },
+  { epsg: 3857, label: "EPSG:3857 — مرکاتور وب" },
+  { epsg: 4326, label: "EPSG:4326 — مختصات جغرافیایی WGS 84" },
 ];
 
 const PIPELINE = [
-  { label: "RAW", note: "immutable uploads", tone: "text-muted" },
-  { label: "VALIDATED", note: "QA/QC passed", tone: "text-cyan" },
-  { label: "APPROVED", note: "signed off", tone: "text-lime" },
-  { label: "TIN · CONTOURS", note: "CDT + breaklines", tone: "text-pink" },
-  { label: "VOLUMES · PROFILE", note: "cut & fill", tone: "text-amber" },
-  { label: "DXF", note: "CAD deliverable", tone: "text-ink" },
+  { label: "RAW", note: "فایل‌های ورودیِ تغییرناپذیر", tone: "text-muted" },
+  { label: "VALIDATED", note: "کنترل کیفیت انجام‌شده", tone: "text-cyan" },
+  { label: "APPROVED", note: "تأیید نهایی", tone: "text-lime" },
+  { label: "شبکه مثلثی · منحنی میزان", note: "مثلث‌بندی مقید و خطوط شکست", tone: "text-pink" },
+  { label: "حجم عملیات · نیمرخ", note: "خاک‌برداری و خاک‌ریزی", tone: "text-amber" },
+  { label: "DXF", note: "خروجی نقشه‌کشی مهندسی", tone: "text-ink" },
 ];
 
 export default function Dashboard() {
@@ -61,24 +61,24 @@ export default function Dashboard() {
     setSeeding(kind);
     try {
       const result = kind === "survey" ? await api.seedDemo() : await api.seedGsiDemo();
-      toast("success", result.created ? `Demo project created — ${result.project.name}` : "Demo project already exists");
+      toast("success", result.created ? `پروژهٔ آزمایشی ایجاد شد — ${result.project.name}` : "پروژهٔ آزمایشی از قبل وجود دارد");
       await loadProjects();
       navigate(`/projects/${result.project.id}`);
     } catch (error) {
-      toast("error", `Demo seed failed: ${(error as Error).message}`);
+      toast("error", `ساخت دادهٔ آزمایشی ناموفق بود: ${(error as Error).message}`);
     } finally {
       setSeeding(null);
     }
   };
 
   const remove = async (project: Project) => {
-    if (!window.confirm(`Delete "${project.name}" and all of its points and derived outputs?`)) return;
+    if (!window.confirm(`پروژهٔ «${project.name}» و همهٔ نقاط و خروجی‌های مشتق‌شده حذف شود؟`)) return;
     try {
       await api.deleteProject(project.id);
-      toast("success", "Project deleted");
+      toast("success", "پروژه حذف شد");
       await loadProjects();
     } catch (error) {
-      toast("error", `Delete failed: ${(error as Error).message}`);
+      toast("error", `حذف پروژه ناموفق بود: ${(error as Error).message}`);
     }
   };
 
@@ -87,36 +87,35 @@ export default function Dashboard() {
       <div className="max-w-[1400px] mx-auto px-6 py-6">
         <div className="flex flex-wrap items-end gap-4">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-cyan/80">Surveying · GIS · CAD · Civil</div>
-            <h1 className="text-2xl font-semibold tracking-tight mt-1">Project hub</h1>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-cyan/80">نقشه‌برداری · سامانه اطلاعات مکانی · نقشه‌کشی مهندسی</div>
+            <h1 className="text-2xl font-semibold tracking-tight mt-1">مدیریت پروژه‌ها</h1>
             <p className="text-xs text-muted mt-1.5 max-w-2xl leading-relaxed">
-              Field-to-finish processing: import total-station TXT/GSI, validate with QA/QC, build a
-              constrained TIN, derive contours, profiles and cut &amp; fill volumes, then export a layered DXF.
+              از ورود فایل‌های توتال‌استیشن TXT/GSI تا کنترل کیفیت، ساخت شبکه مثلثی مقید، استخراج منحنی میزان، نیمرخ و حجم خاک‌برداری و خاک‌ریزی و در پایان خروجی DXF لایه‌بندی‌شده.
             </p>
           </div>
-          <div className="ml-auto flex flex-wrap items-center gap-2">
+          <div className="ms-auto flex flex-wrap items-center gap-2">
             <button className="btn" onClick={() => void seed("gsi")} disabled={seeding !== null}>
               {seeding === "gsi" ? <Spinner /> : <Satellite size={13} />}
-              Leica GSI demo
+              نمونهٔ لایکا GSI
             </button>
             <button className="btn" onClick={() => void seed("survey")} disabled={seeding !== null}>
               {seeding === "survey" ? <Spinner /> : <FileStack size={13} />}
-              Field survey demo
+              نمونهٔ برداشت میدانی
             </button>
             <button className="btn-primary" onClick={() => setShowNew(true)}>
-              <FolderPlus size={13} /> New project
+              <FolderPlus size={13} /> پروژهٔ جدید
             </button>
           </div>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
           {[
-            { icon: <Boxes size={14} />, label: "Projects", value: fmtInt(projects.length), tone: "text-ink" },
-            { icon: <Database size={14} />, label: "Survey points", value: fmtInt(totalPoints), tone: "text-cyan" },
-            { icon: <Mountain size={14} />, label: "Derived outputs", value: fmtInt(totalDerived), tone: "text-pink" },
+            { icon: <Boxes size={14} />, label: "پروژه‌ها", value: fmtInt(projects.length), tone: "text-ink" },
+            { icon: <Database size={14} />, label: "نقاط برداشت", value: fmtInt(totalPoints), tone: "text-cyan" },
+            { icon: <Mountain size={14} />, label: "خروجی‌های مشتق‌شده", value: fmtInt(totalDerived), tone: "text-pink" },
             {
               icon: <Ruler size={14} />,
-              label: "Point CRS coverage",
+              label: "سامانه‌های مختصات",
               value: `${new Set(projects.map((p) => p.crs_epsg)).size}`,
               tone: "text-lime",
             },
@@ -135,7 +134,7 @@ export default function Dashboard() {
 
         <div className="panel mt-4 px-4 py-3">
           <div className="text-[9px] uppercase tracking-[0.18em] text-muted mb-2">
-            Data governance — every downstream artefact is invalidated when upstream data changes
+            مدیریت وابستگی داده — با تغییر دادهٔ مبنا، همهٔ خروجی‌های وابسته نامعتبر می‌شوند
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {PIPELINE.map((step, index) => (
@@ -187,7 +186,7 @@ export default function Dashboard() {
                     event.stopPropagation();
                     void remove(project);
                   }}
-                  title="Delete project"
+                  title="حذف پروژه"
                 >
                   <Trash2 size={13} />
                 </button>
@@ -215,15 +214,13 @@ export default function Dashboard() {
             <Panel className="xl:col-span-2" bodyClassName="p-0">
               <div className="p-10 flex flex-col items-center text-center gap-3">
                 <UploadCloud size={26} className="text-cyan/70" />
-                <div className="text-sm">No projects yet</div>
+                <div className="text-sm">هنوز پروژه‌ای ثبت نشده است</div>
                 <p className="text-[11px] text-muted max-w-md leading-relaxed">
-                  Create a project and import a total-station file, or load the bundled Leimuiden sidewalk
-                  dataset — 229 coded points, curb breaklines, a proposed design surface and a Leica GSI
-                  export.
+                  یک پروژه بسازید و فایل توتال‌استیشن را وارد کنید، یا دادهٔ نمونهٔ آماده را با ۲۲۹ نقطهٔ کدگذاری‌شده، خطوط شکست جدول، سطح طراحی و فایل خروجی Leica GSI بارگذاری کنید.
                 </p>
                 <div className="flex gap-2 mt-1">
                   <button className="btn-primary" onClick={() => setShowNew(true)}>
-                    <Plus size={13} /> New project
+                    <Plus size={13} /> پروژهٔ جدید
                   </button>
                   <button className="btn" onClick={() => void seed("survey")}>
                     <FileStack size={13} /> Load demo dataset
@@ -263,7 +260,7 @@ function NewProjectModal({ onClose }: { onClose: () => void }) {
 
   const submit = async () => {
     if (!form.name.trim()) {
-      toast("error", "A project name is required");
+      toast("error", "نام پروژه الزامی است");
       return;
     }
     setSaving(true);
@@ -289,20 +286,20 @@ function NewProjectModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <Modal title="New survey project" onClose={onClose} width="max-w-xl">
+    <Modal title="ایجاد پروژهٔ نقشه‌برداری" onClose={onClose} width="max-w-xl">
       <div className="grid grid-cols-2 gap-3">
         <div className="col-span-2">
-          <label className="label">Project name *</label>
+          <label className="label">نام پروژه *</label>
           <input
             className="field"
             autoFocus
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            placeholder="Kerkstraat sidewalk reconstruction"
+            placeholder="بازسازی پیاده‌روی خیابان کرک"
           />
         </div>
         <div>
-          <label className="label">Project code</label>
+          <label className="label">کد پروژه</label>
           <input
             className="field"
             value={form.code}
@@ -311,16 +308,16 @@ function NewProjectModal({ onClose }: { onClose: () => void }) {
           />
         </div>
         <div>
-          <label className="label">Client</label>
+          <label className="label">کارفرما</label>
           <input
             className="field"
             value={form.client}
             onChange={(e) => setForm({ ...form, client: e.target.value })}
-            placeholder="Municipality"
+            placeholder="شهرداری"
           />
         </div>
         <div>
-          <label className="label">Location</label>
+          <label className="label">موقعیت مکانی</label>
           <input
             className="field"
             value={form.location}
@@ -329,7 +326,7 @@ function NewProjectModal({ onClose }: { onClose: () => void }) {
           />
         </div>
         <div>
-          <label className="label">Horizontal CRS</label>
+          <label className="label">سامانه مختصات افقی</label>
           <select
             className="field"
             value={form.crs_epsg}
@@ -343,23 +340,23 @@ function NewProjectModal({ onClose }: { onClose: () => void }) {
           </select>
         </div>
         <div>
-          <label className="label">Angle unit (total station)</label>
+          <label className="label">واحد زاویه (توتال‌استیشن)</label>
           <select
             className="field"
             value={form.angle_unit}
             onChange={(e) => setForm({ ...form, angle_unit: e.target.value as "gon" | "deg" })}
           >
-            <option value="gon">gon (centesimal)</option>
-            <option value="deg">degree (sexagesimal)</option>
+            <option value="gon">گرادیان (سامانهٔ صدگانی)</option>
+            <option value="deg">درجه (سامانهٔ شصتگانی)</option>
           </select>
         </div>
         <div>
-          <label className="label">Notes</label>
+          <label className="label">یادداشت‌ها</label>
           <input
             className="field"
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
-            placeholder="Scope, control, deliverable"
+            placeholder="دامنهٔ کار، نقاط کنترل، اقلام تحویلی"
           />
         </div>
       </div>

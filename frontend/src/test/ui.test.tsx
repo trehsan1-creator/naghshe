@@ -97,9 +97,9 @@ describe("SurveyPro shell", () => {
       </MemoryRouter>,
     );
     expect(await screen.findByText(/Sidewalk reconstruction/)).toBeInTheDocument();
-    expect(screen.getAllByText("Project hub").length).toBeGreaterThan(0);
-    expect(screen.getByText(/DATA GOVERNANCE|Data governance/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /New project/i })).toBeInTheDocument();
+    expect(screen.getAllByText("مدیریت پروژه‌ها").length).toBeGreaterThan(0);
+    expect(screen.getByText(/مدیریت وابستگی داده/)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /پروژهٔ جدید/i })).toBeInTheDocument();
   });
 
   it("renders the import wizard mapper and QA findings for an analysed upload", async () => {
@@ -117,11 +117,11 @@ describe("SurveyPro shell", () => {
       </MemoryRouter>,
     );
 
-    expect(await screen.findByText("Import field data")).toBeInTheDocument();
-    expect(screen.getByText("Column mapper")).toBeInTheDocument();
-    expect(screen.getByText("QA/QC warnings")).toBeInTheDocument();
-    expect(screen.getByText(/Commit 8 points|Commit 229 points/)).toBeInTheDocument();
-    expect(screen.getAllByText(/easting|Northing/i).length).toBeGreaterThan(0);
+    expect(await screen.findByText("ورود داده‌های برداشت")).toBeInTheDocument();
+    expect(screen.getByText("نگاشت ستون‌ها")).toBeInTheDocument();
+    expect(screen.getByText("هشدارهای کنترل کیفیت")).toBeInTheDocument();
+    expect(screen.getByText(/ثبت \d+ نقطه/)).toBeInTheDocument();
+    expect(screen.getAllByText(/مختصات شرقی|مختصات شمالی/i).length).toBeGreaterThan(0);
   });
 
   it("shows the workspace toolbar, layers and point table for a loaded project", async () => {
@@ -138,10 +138,10 @@ describe("SurveyPro shell", () => {
       </MemoryRouter>,
     );
 
-    expect(await screen.findByText("Point database")).toBeInTheDocument();
-    expect(screen.getByText("Layers")).toBeInTheDocument();
+    expect(await screen.findByText("جدول نقاط برداشت")).toBeInTheDocument();
+    expect(screen.getByText("لایه‌ها")).toBeInTheDocument();
     expect(screen.getByText("Surface")).toBeInTheDocument();
-    expect(screen.getByText("Build constrained TIN")).toBeInTheDocument();
+    expect(screen.getByText("ساخت شبکه مثلثی مقید")).toBeInTheDocument();
     expect(screen.getAllByText("CL1_ST").length).toBeGreaterThan(0);
     expect(await screen.findByTestId("plan-canvas")).toBeInTheDocument();
   });

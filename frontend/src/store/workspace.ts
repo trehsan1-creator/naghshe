@@ -160,12 +160,12 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
       const { projects } = await api.listProjects();
       set({ projects });
     } catch (error) {
-      get().toast("error", `Could not load projects: ${(error as Error).message}`);
+      get().toast("error", `بارگذاری فهرست پروژه‌ها ناموفق بود: ${(error as Error).message}`);
     }
   },
 
   openProject: async (id) => {
-    set({ busy: "Loading project…" });
+    set({ busy: "در حال بارگذاری پروژه…" });
     try {
       const project = await api.getProject(id);
       set({ project, view: "workspace", selectedPoint: null, volume: null, profile: null });
@@ -195,7 +195,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
         set({ surface: null });
       }
     } catch (error) {
-      get().toast("error", `Could not open project: ${(error as Error).message}`);
+      get().toast("error", `بازکردن پروژه ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -212,7 +212,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
       });
       set({ points: data.points, pointsTotal: data.total });
     } catch (error) {
-      get().toast("error", `Could not load points: ${(error as Error).message}`);
+      get().toast("error", `بارگذاری نقاط ناموفق بود: ${(error as Error).message}`);
     }
   },
 
@@ -230,14 +230,14 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   runQa: async () => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Running QA/QC…" });
+    set({ busy: "در حال اجرای کنترل کیفیت…" });
     try {
       const qa = await api.runQa(project.id);
       set({ qa });
       await get().refreshPoints();
-      get().toast("success", `QA/QC complete — ${qa.flags.length} finding(s)`);
+      get().toast("success", `کنترل کیفیت پایان یافت — ${qa.flags.length} مورد شناسایی شد`);
     } catch (error) {
-      get().toast("error", `QA/QC failed: ${(error as Error).message}`);
+      get().toast("error", `اجرای کنترل کیفیت ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -249,25 +249,25 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
     try {
       if (ids && ids.length) {
         const result = await api.bulkStatus(project.id, { status, ids });
-        get().toast("success", `${result.updated} point(s) → ${status}`);
+        get().toast("success", `${result.updated} نقطه ← ${status}`);
       } else {
         const from = get().statusFilter.length
           ? get().statusFilter
           : (["RAW", "VALIDATED", "APPROVED"] as PointStatus[]);
         const result = await api.bulkStatus(project.id, { status, from_status: from });
-        get().toast("success", `${result.updated} point(s) → ${status}`);
+        get().toast("success", `${result.updated} نقطه ← ${status}`);
       }
       if (selectedPoint) selectPoint({ ...selectedPoint, status });
       await Promise.all([get().refreshPoints(), get().refreshDerived()]);
     } catch (error) {
-      get().toast("error", `Status update failed: ${(error as Error).message}`);
+      get().toast("error", `به‌روزرسانی وضعیت ناموفق بود: ${(error as Error).message}`);
     }
   },
 
   buildSurface: async (options = {}) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Building constrained TIN…" });
+    set({ busy: "در حال ساخت شبکه مثلثی مقید…" });
     try {
       const surface = await api.buildSurface(project.id, {
         statuses: get().statusFilter.length ? get().statusFilter : undefined,
@@ -295,7 +295,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
         `TIN built: ${stats.triangles ?? 0} triangles, ${surface.contours.length} contours`,
       );
     } catch (error) {
-      get().toast("error", `Surface build failed: ${(error as Error).message}`);
+      get().toast("error", `ساخت سطح ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -304,12 +304,12 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   loadSurface: async (surfaceId) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Loading surface…" });
+    set({ busy: "در حال بارگذاری سطح…" });
     try {
       const surface = await api.getSurface(project.id, surfaceId);
       set({ surface, viewMode: get().viewMode === "plan" ? "3d" : get().viewMode });
     } catch (error) {
-      get().toast("error", `Could not load surface: ${(error as Error).message}`);
+      get().toast("error", `بارگذاری سطح ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -318,14 +318,14 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   computeVolumes: async (options) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Computing cut & fill…" });
+    set({ busy: "در حال محاسبهٔ خاک‌برداری و خاک‌ریزی…" });
     try {
       const volume = await api.computeVolumes(project.id, options);
       set({ volume });
       await get().refreshDerived();
-      get().toast("success", `Cut ${volume.cut_m3.toFixed(2)} m³ · Fill ${volume.fill_m3.toFixed(2)} m³`);
+      get().toast("success", `خاک‌برداری ${volume.cut_m3.toFixed(2)} مترمکعب · خاک‌ریزی ${volume.fill_m3.toFixed(2)} مترمکعب`);
     } catch (error) {
-      get().toast("error", `Volume computation failed: ${(error as Error).message}`);
+      get().toast("error", `محاسبهٔ حجم ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -334,12 +334,12 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   computeProfile: async (options) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Sampling profile…" });
+    set({ busy: "در حال نمونه‌برداری نیمرخ…" });
     try {
       const profile = await api.computeProfile(project.id, options);
       set({ profile });
     } catch (error) {
-      get().toast("error", `Profile failed: ${(error as Error).message}`);
+      get().toast("error", `محاسبهٔ نیمرخ ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -348,12 +348,12 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   computeCrossSections: async (options) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Extracting cross sections…" });
+    set({ busy: "در حال استخراج مقاطع عرضی…" });
     try {
       const crossSections = await api.computeCrossSections(project.id, options);
       set({ crossSections });
     } catch (error) {
-      get().toast("error", `Cross sections failed: ${(error as Error).message}`);
+      get().toast("error", `استخراج مقاطع عرضی ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -366,16 +366,16 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
       await api.upsertCodeMapping(project.id, mapping);
       const refreshed = await api.getProject(project.id);
       set({ project: refreshed });
-      get().toast("success", `Code ${mapping.code} saved`);
+      get().toast("success", `کد ${mapping.code} ذخیره شد`);
     } catch (error) {
-      get().toast("error", `Could not save code: ${(error as Error).message}`);
+      get().toast("error", `ذخیرهٔ کد ناموفق بود: ${(error as Error).message}`);
     }
   },
 
   startUpload: async (file) => {
     const { project } = get();
     if (!project) return;
-    set({ busy: "Uploading & analysing…", upload: null, analysis: null, mapping: null });
+    set({ busy: "در حال بارگذاری و تحلیل…", upload: null, analysis: null, mapping: null });
     try {
       const result = await api.uploadFile(project.id, file);
       set({
@@ -385,9 +385,9 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
           ? ({ ...result.analysis.mapping } as unknown as Record<string, number | null | boolean | string>)
           : null,
       });
-      get().toast("success", `${result.file.original_filename} analysed`);
+      get().toast("success", `فایل ${result.file.original_filename} تحلیل شد`);
     } catch (error) {
-      get().toast("error", `Upload failed: ${(error as Error).message}`);
+      get().toast("error", `بارگذاری ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -396,7 +396,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   remap: async (mapping) => {
     const { project, upload } = get();
     if (!project || !upload) return;
-    set({ busy: "Re-parsing with the new mapping…", mapping });
+    set({ busy: "در حال بازپردازش با نگاشت جدید…", mapping });
     try {
       const analysis = await api.analyzeFile(project.id, upload.file.id, {
         mapping: mapping as Record<string, unknown>,
@@ -404,7 +404,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
       });
       set({ analysis });
     } catch (error) {
-      get().toast("error", `Mapping failed: ${(error as Error).message}`);
+      get().toast("error", `بازپردازش ناموفق بود: ${(error as Error).message}`);
     } finally {
       set({ busy: null });
     }
@@ -413,7 +413,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   commitImport: async (status, swapXy, replaceExisting = false) => {
     const { project, upload, mapping } = get();
     if (!project || !upload) return false;
-    set({ busy: "Committing points…" });
+    set({ busy: "در حال ثبت نقاط…" });
     try {
       const result = await api.commitFile(project.id, upload.file.id, {
         mapping: (mapping ?? {}) as Record<string, unknown>,
@@ -421,12 +421,12 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
         swap_xy: swapXy,
         replace_existing: replaceExisting,
       });
-      get().toast("success", `${result.points_created} point(s) imported as ${status}`);
+      get().toast("success", `${result.points_created} نقطه با وضعیت ${status} وارد شد`);
       set({ upload: null, analysis: null, mapping: null, view: "workspace" });
       await get().openProject(project.id);
       return true;
     } catch (error) {
-      get().toast("error", `Import failed: ${(error as Error).message}`);
+      get().toast("error", `ورود داده ناموفق بود: ${(error as Error).message}`);
       return false;
     } finally {
       set({ busy: null });

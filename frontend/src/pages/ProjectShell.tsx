@@ -16,7 +16,7 @@ export default function ProjectShell() {
     if (!projectId) return;
     if (project?.id === projectId) return;
     openProject(projectId).catch((error) => {
-      toast("error", `Could not open project: ${(error as Error).message}`);
+      toast("error", `بازکردن پروژه ناموفق بود: ${(error as Error).message}`);
       navigate("/");
     });
   }, [projectId, project?.id, openProject, toast, navigate]);
@@ -31,25 +31,25 @@ export default function ProjectShell() {
   if (!project || project.id !== projectId) {
     return (
       <div className="h-full flex items-center justify-center gap-2 text-xs text-muted">
-        <Spinner /> Loading project workspace…
+        <Spinner /> در حال بارگذاری فضای کار پروژه…
       </div>
     );
   }
 
   const rail = [
-    { to: `/projects/${project.id}`, label: "Canvas", icon: Activity, end: true },
-    { to: `/projects/${project.id}/import`, label: "Import", icon: Upload, end: false },
-    { to: `/projects/${project.id}/codes`, label: "Codes", icon: Code2, end: false },
-    { to: `/projects/${project.id}/qa`, label: "QA/QC", icon: ShieldCheck, end: false },
+    { to: `/projects/${project.id}`, label: "فضای کار", icon: Activity, end: true },
+    { to: `/projects/${project.id}/import`, label: "ورود داده", icon: Upload, end: false },
+    { to: `/projects/${project.id}/codes`, label: "کدها", icon: Code2, end: false },
+    { to: `/projects/${project.id}/qa`, label: "کنترل کیفیت", icon: ShieldCheck, end: false },
   ];
 
   return (
     <div className="h-full flex min-h-0">
-      <aside className="w-12 shrink-0 border-r border-edge bg-panel flex flex-col items-center py-2 gap-1">
+      <aside className="w-12 shrink-0 border-e border-edge bg-panel flex flex-col items-center py-2 gap-1">
         <button
           className="w-9 h-9 rounded flex items-center justify-center text-muted hover:text-cyan hover:bg-panel2 transition-colors"
           onClick={() => navigate("/")}
-          title="Back to project hub"
+          title="بازگشت به فهرست پروژه‌ها"
         >
           <ArrowLeft size={15} />
         </button>

@@ -2,14 +2,10 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 import { X } from "lucide-react";
 import type { PointStatus } from "../lib/types";
+import { STATUS_FA, num, int } from "../lib/i18n";
 
-export const fmt = (value: number | null | undefined, digits = 3) =>
-  value === null || value === undefined || Number.isNaN(value)
-    ? "—"
-    : value.toLocaleString("en-GB", { minimumFractionDigits: digits, maximumFractionDigits: digits });
-
-export const fmtInt = (value: number | null | undefined) =>
-  value === null || value === undefined ? "—" : Math.round(value).toLocaleString("en-GB");
+export const fmt = num;
+export const fmtInt = int;
 
 export function Panel({
   title,
@@ -32,7 +28,7 @@ export function Panel({
         <header className="panel-title">
           {icon}
           <span className="truncate">{title}</span>
-          <div className="ml-auto flex items-center gap-1 normal-case tracking-normal">{right}</div>
+          <div className="ms-auto flex items-center gap-1 normal-case tracking-normal">{right}</div>
         </header>
       )}
       <div className={clsx("flex-1 min-h-0 overflow-auto", bodyClassName)}>{children}</div>
@@ -53,15 +49,17 @@ const statusStyles: Record<string, string> = {
 };
 
 export function StatusBadge({ status, className }: { status: string; className?: string }) {
+  const label = STATUS_FA[status] ?? status;
   return (
     <span
+      title={status}
       className={clsx(
-        "inline-flex items-center h-[18px] px-1.5 rounded border text-[10px] font-mono uppercase tracking-wider whitespace-nowrap",
+        "inline-flex items-center h-[18px] px-1.5 rounded border text-[10px] font-medium whitespace-nowrap",
         statusStyles[status] ?? "border-edge text-muted",
         className,
       )}
     >
-      {status}
+      {label}
     </span>
   );
 }
@@ -110,11 +108,11 @@ export function Stat({
     danger: "text-danger",
   }[tone];
   return (
-    <div className="px-3 py-2 border-r border-edge/70 last:border-r-0 min-w-0">
-      <div className="text-[9px] uppercase tracking-[0.14em] text-muted truncate">{label}</div>
+    <div className="px-3 py-2 border-e border-edge/70 last:border-e-0 min-w-0">
+      <div className="text-[9px] uppercase tracking-[0.12em] text-muted truncate">{label}</div>
       <div className={clsx("text-sm font-mono tabular truncate", toneClass)}>
         {value}
-        {unit && <span className="text-[10px] text-muted ml-0.5">{unit}</span>}
+        {unit && <span className="text-[10px] text-muted ms-0.5">{unit}</span>}
       </div>
     </div>
   );
@@ -134,7 +132,7 @@ export function Spinner({ className }: { className?: string }) {
 export function Empty({ title, hint, action }: { title: string; hint?: string; action?: ReactNode }) {
   return (
     <div className="h-full flex flex-col items-center justify-center gap-2 p-6 text-center">
-      <div className="text-xs text-muted uppercase tracking-[0.18em]">{title}</div>
+      <div className="text-xs text-muted tracking-[0.06em]">{title}</div>
       {hint && <div className="text-[11px] text-muted/70 max-w-sm leading-relaxed">{hint}</div>}
       {action}
     </div>
@@ -157,7 +155,7 @@ export function Modal({
       <div className={clsx("panel w-full shadow-2xl", width)}>
         <header className="panel-title">
           {title}
-          <button className="ml-auto btn-ghost !h-6 !px-1.5" onClick={onClose} aria-label="Close">
+          <button className="ms-auto btn-ghost !h-6 !px-1.5" onClick={onClose} aria-label="بستن">
             <X size={13} />
           </button>
         </header>
@@ -172,7 +170,7 @@ export function KeyValue({ rows }: { rows: [string, ReactNode][] }) {
     <dl className="divide-y divide-edge/60 text-xs">
       {rows.map(([key, value]) => (
         <div key={key} className="flex items-baseline gap-3 px-3 py-1.5">
-          <dt className="w-28 shrink-0 text-[10px] uppercase tracking-[0.1em] text-muted">{key}</dt>
+          <dt className="w-28 shrink-0 text-[10px] tracking-[0.06em] text-muted">{key}</dt>
           <dd className="font-mono tabular text-ink/90 break-all">{value}</dd>
         </div>
       ))}

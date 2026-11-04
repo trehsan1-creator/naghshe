@@ -13,40 +13,40 @@ import { api } from "../lib/api";
 import { useWorkspace } from "../store/workspace";
 import { StatusBadge } from "./ui";
 
-const NAV_ICONS = {
-  workspace: Activity,
-  import: Upload,
-  codes: Code2,
-  qa: ShieldCheck,
-};
-
 export default function TopBar() {
   const navigate = useNavigate();
   const project = useWorkspace((s) => s.project);
   const projectId = project?.id;
 
   const nav = [
-    { key: "workspace", label: "Workspace", to: `/projects/${projectId}`, icon: NAV_ICONS.workspace },
-    { key: "import", label: "Import", to: `/projects/${projectId}/import`, icon: NAV_ICONS.import },
-    { key: "codes", label: "Code library", to: `/projects/${projectId}/codes`, icon: NAV_ICONS.codes },
-    { key: "qa", label: "QA/QC", to: `/projects/${projectId}/qa`, icon: NAV_ICONS.qa },
+    { key: "workspace", label: "فضای کار", to: `/projects/${projectId}`, icon: Activity },
+    { key: "import", label: "ورود داده", to: `/projects/${projectId}/import`, icon: Upload },
+    { key: "codes", label: "کتابخانه کدها", to: `/projects/${projectId}/codes`, icon: Code2 },
+    { key: "qa", label: "کنترل کیفیت", to: `/projects/${projectId}/qa`, icon: ShieldCheck },
   ];
 
   return (
     <header className="h-12 shrink-0 border-b border-edge bg-panel flex items-stretch">
       <button
         onClick={() => navigate("/")}
-        className="px-4 flex items-center gap-2.5 border-r border-edge hover:bg-panel2 transition-colors"
-        title="All projects"
+        className="px-4 flex items-center gap-2.5 border-e border-edge hover:bg-panel2 transition-colors"
+        title="فهرست پروژه‌ها"
       >
         <svg viewBox="0 0 32 32" className="w-5 h-5">
-          <path d="M5 24h22M16 5v19M8 12l8-6 8 6" stroke="#38BDF8" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M5 24h22M16 5v19M8 12l8-6 8 6"
+            stroke="#38BDF8"
+            strokeWidth="2.4"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
           <circle cx="16" cy="24" r="2.6" fill="#F472B6" />
         </svg>
         <span className="text-sm font-semibold tracking-tight">
-          Survey<span className="text-cyan">Pro</span>
+          سروی<span className="text-cyan">پرو</span>
         </span>
-        <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-muted border border-edge rounded px-1 py-0.5">
+        <span className="text-[9px] font-mono tracking-[0.12em] text-muted border border-edge rounded px-1 py-0.5">
           v1.0
         </span>
       </button>
@@ -59,13 +59,13 @@ export default function TopBar() {
               <StatusBadge status={project.dependency_state} />
             </div>
             <div className="flex items-center gap-2 text-[10px] text-muted font-mono mt-0.5">
-              <span>EPSG:{project.crs_epsg}</span>
+              <span dir="ltr">EPSG:{project.crs_epsg}</span>
               <span className="text-edge">|</span>
               <span>{project.vertical_datum}</span>
               <span className="text-edge">|</span>
-              <span>{project.linear_unit}</span>
+              <span>{project.linear_unit === "m" ? "متر" : project.linear_unit}</span>
               <span className="text-edge">|</span>
-              <span>{project.angle_unit}</span>
+              <span>{project.angle_unit === "gon" ? "گرادیان" : "درجه"}</span>
             </div>
           </div>
 
@@ -76,8 +76,10 @@ export default function TopBar() {
                 to={to}
                 end={key === "workspace"}
                 className={({ isActive }) =>
-                  `px-3 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.1em] border-r border-edge transition-colors ${
-                    isActive ? "text-cyan bg-cyan/5 shadow-[inset_0_-2px_0_0_#38BDF8]" : "text-muted hover:text-ink"
+                  `px-3 flex items-center gap-1.5 text-[11px] border-e border-edge transition-colors ${
+                    isActive
+                      ? "text-cyan bg-cyan/5 shadow-[inset_0_-2px_0_0_#38BDF8]"
+                      : "text-muted hover:text-ink"
                   }`
                 }
               >
@@ -87,12 +89,12 @@ export default function TopBar() {
             ))}
           </nav>
 
-          <div className="ml-auto flex items-center gap-1.5 pr-3">
+          <div className="topbar-actions ms-auto flex items-center gap-1.5 pe-3">
             <a
               className="btn-ghost"
               href={api.exportCsvUrl(project.id)}
               download
-              title="Export validated/approved points as CSV"
+              title="خروجی CSV نقاط اعتبارسنجی‌شده و تأییدشده"
             >
               <FileSpreadsheet size={13} />
               <span className="hidden xl:inline">CSV</span>
@@ -100,19 +102,19 @@ export default function TopBar() {
             <button
               className="btn-primary"
               onClick={() => window.open(api.exportDxfUrl(project.id), "_blank")}
-              title="One-click layered DXF deliverable"
+              title="خروجی DXF لایه‌بندی‌شده برای اتوکد"
             >
               <Download size={13} />
-              <span className="hidden md:inline">DXF</span>
+              <span className="hidden md:inline">خروجی DXF</span>
             </button>
           </div>
         </div>
       ) : (
-        <div className="flex-1 flex items-center px-4 gap-2 text-[11px] uppercase tracking-[0.14em] text-muted">
+        <div className="flex-1 flex items-center px-4 gap-2 text-[11px] text-muted">
           <FolderKanban size={13} />
-          Project hub
-          <span className="ml-auto flex items-center gap-1.5 text-[10px] normal-case tracking-normal">
-            <Layers size={12} /> field-to-finish · TIN · volumes · DXF
+          مرکز پروژه‌ها
+          <span className="ms-auto flex items-center gap-1.5 text-[10px]">
+            <Layers size={12} /> از برداشت تا نقشه · سطح مقید · احجام · DXF
           </span>
         </div>
       )}

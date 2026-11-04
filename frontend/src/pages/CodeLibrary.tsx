@@ -69,30 +69,30 @@ export default function CodeLibrary() {
     <div className="h-full overflow-auto">
       <div className="max-w-[1400px] mx-auto p-4 space-y-3">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">Field-to-finish</div>
-          <h1 className="text-lg font-semibold tracking-tight mt-0.5">Code library &amp; CAD layers</h1>
+          <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">از برداشت تا نقشه</div>
+          <h1 className="text-lg font-semibold tracking-tight mt-0.5">کتابخانهٔ کدها و لایه‌های نقشه‌کشی</h1>
           <p className="text-[11px] text-muted mt-1">
-            Each field code maps to a CAD layer, a geometry kind (point, block, line, polygon) and a
+            Each field code maps to a لایهٔ نقشه‌کشی, a geometry kind (point, block, line, polygon) and a
             breakline flag. These mappings drive linework generation, the TIN constraints and the DXF writer.
           </p>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-3">
           <Panel
-            title="Code mappings"
+            title="نگاشت کدهای برداشت"
             icon={<Code2 size={12} />}
             right={<span className="text-[9px] font-mono text-muted">{mappings.length} codes</span>}
           >
             <table className="w-full text-[10px]">
               <thead className="sticky top-0 bg-panel2 z-10">
                 <tr className="text-[9px] uppercase tracking-[0.1em] text-muted">
-                  <th className="text-left font-normal px-2 py-1">code</th>
-                  <th className="text-left font-normal px-2 py-1">kind</th>
-                  <th className="text-left font-normal px-2 py-1">layer</th>
-                  <th className="text-left font-normal px-2 py-1">block</th>
-                  <th className="text-center font-normal px-2 py-1">brk</th>
-                  <th className="text-right font-normal px-2 py-1">used</th>
-                  <th className="text-right font-normal px-2 py-1">ACI</th>
+                  <th className="text-start font-normal px-2 py-1">کد</th>
+                  <th className="text-start font-normal px-2 py-1">نوع</th>
+                  <th className="text-start font-normal px-2 py-1">لایه</th>
+                  <th className="text-start font-normal px-2 py-1">بلوک</th>
+                  <th className="text-center font-normal px-2 py-1">شکست</th>
+                  <th className="text-end font-normal px-2 py-1">استفاده</th>
+                  <th className="text-end font-normal px-2 py-1">ACI</th>
                   <th />
                 </tr>
               </thead>
@@ -106,8 +106,8 @@ export default function CodeLibrary() {
                     <td className="px-2 py-[3px] text-center">
                       {mapping.is_breakline ? <span className="text-pink">●</span> : <span className="text-muted/40">·</span>}
                     </td>
-                    <td className="px-2 py-[3px] text-right font-mono text-muted">{fmtInt(usage[mapping.code] ?? 0)}</td>
-                    <td className="px-2 py-[3px] text-right">
+                    <td className="px-2 py-[3px] text-end font-mono text-muted">{fmtInt(usage[mapping.code] ?? 0)}</td>
+                    <td className="px-2 py-[3px] text-end">
                       <span className="inline-flex items-center gap-1 font-mono text-muted">
                         {mapping.color}
                         <span className="w-2 h-2 rounded-sm" style={{ background: aciToHex(mapping.color) }} />
@@ -132,11 +132,11 @@ export default function CodeLibrary() {
           </Panel>
 
           <div className="space-y-3">
-            <Panel title="Add / update code" icon={<Plus size={12} />}>
+            <Panel title="افزودن یا ویرایش کد" icon={<Plus size={12} />}>
               <div className="p-2.5 space-y-2">
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="label">Code *</label>
+                    <label className="label">کد برداشت *</label>
                     <input
                       className="field font-mono"
                       placeholder="CURB"
@@ -145,7 +145,7 @@ export default function CodeLibrary() {
                     />
                   </div>
                   <div>
-                    <label className="label">Geometry</label>
+                    <label className="label">هندسه</label>
                     <select
                       className="field"
                       value={draft.kind}
@@ -159,7 +159,7 @@ export default function CodeLibrary() {
                     </select>
                   </div>
                   <div>
-                    <label className="label">CAD layer</label>
+                    <label className="label">لایهٔ نقشه‌کشی</label>
                     <input
                       className="field font-mono"
                       value={draft.layer}
@@ -180,14 +180,14 @@ export default function CodeLibrary() {
                     </div>
                   </div>
                   <div>
-                    <label className="label">Block name</label>
+                    <label className="label">نام بلوک</label>
                     <input
                       className="field font-mono"
                       placeholder="TREE_SYMBOL"
                       value={draft.block_name ?? ""}
                       onChange={(event) => setDraft({ ...draft, block_name: event.target.value || null })}
                     />
-                    <label className="label mt-2">ACI colour</label>
+                    <label className="label mt-2">رنگ ACI</label>
                     <input
                       type="number"
                       min={1}
@@ -199,10 +199,10 @@ export default function CodeLibrary() {
                   </div>
                 </div>
                 <div>
-                  <label className="label">Description</label>
+                  <label className="label">شرح</label>
                   <input
                     className="field"
-                    placeholder="Top of curb line"
+                    placeholder="لبهٔ بالایی جدول"
                     value={draft.description ?? ""}
                     onChange={(event) => setDraft({ ...draft, description: event.target.value })}
                   />
@@ -226,30 +226,30 @@ export default function CodeLibrary() {
                     />
                     enabled
                   </label>
-                  <button className="btn-primary ml-auto !h-7" onClick={() => void save(draft)}>
+                  <button className="btn-primary ms-auto !h-7" onClick={() => void save(draft)}>
                     <Save size={12} /> Save code
                   </button>
                 </div>
               </div>
             </Panel>
 
-            <Panel title="Layer standards" icon={<Layers size={12} />}>
+            <Panel title="استاندارد لایه‌ها" icon={<Layers size={12} />}>
               <ul className="divide-y divide-edge/50">
                 {layers.map((layer) => (
                   <li key={layer.id ?? layer.name} className="px-2.5 py-1.5 flex items-center gap-2 text-[10px]">
                     <span className="w-2 h-2 rounded-sm" style={{ background: aciToHex(layer.color) }} />
                     <span className="font-mono text-ink/90">{layer.name}</span>
                     <span className="text-muted">{layer.linetype}</span>
-                    <span className="ml-auto text-muted/70 truncate max-w-[45%]">{layer.description}</span>
+                    <span className="ms-auto text-muted/70 truncate max-w-[45%]">{layer.description}</span>
                   </li>
                 ))}
                 {layers.length === 0 && (
-                  <li className="px-2.5 py-2 text-[10px] text-muted">No layers defined.</li>
+                  <li className="px-2.5 py-2 text-[10px] text-muted">لایه‌ای تعریف نشده است.</li>
                 )}
               </ul>
             </Panel>
 
-            <Panel title="Breakline codes" icon={<Layers size={12} />}>
+            <Panel title="کدهای خطوط شکست" icon={<Layers size={12} />}>
               <div className="p-2.5 flex flex-wrap gap-1">
                 {(project.breakline_codes ?? []).map((code) => (
                   <span key={code} className="chip !text-[10px] text-pink border-pink/30">
@@ -257,7 +257,7 @@ export default function CodeLibrary() {
                   </span>
                 ))}
                 {(project.breakline_codes ?? []).length === 0 && (
-                  <span className="text-[10px] text-muted">None — the TIN will not honour curb lines.</span>
+                  <span className="text-[10px] text-muted">هیچ‌کدام — خطوط جدول در ساخت شبکه مثلثی لحاظ نمی‌شوند.</span>
                 )}
               </div>
               <div className="px-2.5 pb-2">

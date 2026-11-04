@@ -16,14 +16,14 @@ import { Panel, StatusBadge, fmtInt } from "./ui";
 import { codeColor, layerHex } from "../lib/plot";
 
 const LAYER_ROWS = [
-  { key: "points", label: "Survey points", icon: CircleDot },
-  { key: "labels", label: "Point numbers", icon: Tag },
+  { key: "points", label: "نقاط برداشت", icon: CircleDot },
+  { key: "labels", label: "شماره نقاط", icon: Tag },
   { key: "linework", label: "Field-to-finish linework", icon: Route },
   { key: "breaklines", label: "3D breaklines", icon: Spline },
   { key: "tin", label: "TIN mesh", icon: Triangle },
   { key: "contoursMajor", label: "Contours (index)", icon: Mountain },
   { key: "contoursMinor", label: "Contours (intermediate)", icon: Mountain },
-  { key: "boundary", label: "Surface boundary", icon: Boxes },
+  { key: "boundary", label: "مرز سطح", icon: Boxes },
 ] as const;
 
 export default function LayerManager() {
@@ -48,7 +48,7 @@ export default function LayerManager() {
 
   return (
     <div className="h-full flex flex-col gap-2 min-h-0">
-      <Panel title="Layers" className="shrink-0" icon={<Boxes size={12} />}>
+      <Panel title="لایه‌ها" className="shrink-0" icon={<Boxes size={12} />}>
         <ul className="py-1">
           {LAYER_ROWS.map(({ key, label, icon: Icon }) => {
             const active = layers[key];
@@ -62,7 +62,7 @@ export default function LayerManager() {
                 >
                   <Icon size={12} className={active ? "text-cyan" : "text-muted/60"} />
                   <span className={`text-[11px] ${active ? "text-ink" : "text-muted"} truncate`}>{label}</span>
-                  <span className="ml-auto text-muted/70 group-hover:text-ink">
+                  <span className="ms-auto text-muted/70 group-hover:text-ink">
                     {active ? <Eye size={11} /> : <EyeOff size={11} />}
                   </span>
                 </button>
@@ -73,7 +73,7 @@ export default function LayerManager() {
       </Panel>
 
       <Panel
-        title="Code legend"
+        title="راهنمای کدها"
         className="shrink-0"
         right={<span className="text-[9px] text-muted font-mono">{codeUsage.length}</span>}
         icon={<Tag size={12} />}
@@ -86,7 +86,7 @@ export default function LayerManager() {
                 style={{ background: codeColor(code, project?.code_mappings ?? []) }}
               />
               <span className="text-[10px] font-mono text-ink/80 truncate">{code || "(none)"}</span>
-              <span className="ml-auto text-[9px] font-mono text-muted">{info.count}</span>
+              <span className="ms-auto text-[9px] font-mono text-muted">{info.count}</span>
               <span
                 className="w-1.5 h-1.5 rounded-full shrink-0"
                 style={{ background: layerHex(info.layer, project?.code_mappings ?? []) }}
@@ -94,12 +94,12 @@ export default function LayerManager() {
               />
             </li>
           ))}
-          {codeUsage.length === 0 && <li className="px-3 py-2 text-[10px] text-muted">No points loaded</li>}
+          {codeUsage.length === 0 && <li className="px-3 py-2 text-[10px] text-muted">نقطه‌ای بارگذاری نشده است</li>}
         </ul>
       </Panel>
 
       <Panel
-        title="Derived outputs"
+        title="خروجی‌های مشتق‌شده"
         className="flex-1 min-h-[140px]"
         right={
           <span className="text-[9px] font-mono text-muted">
@@ -114,18 +114,18 @@ export default function LayerManager() {
             return (
               <li key={item.id}>
                 <button
-                  className={`w-full text-left px-2.5 py-1.5 hover:bg-panel2/70 transition-colors ${
+                  className={`w-full text-start px-2.5 py-1.5 hover:bg-panel2/70 transition-colors ${
                     isActive ? "bg-cyan/5 shadow-[inset_2px_0_0_0_#38BDF8]" : ""
                   }`}
                   onClick={() => {
                     if (item.kind === "surface" && !isActive) void loadSurface(item.id);
                   }}
-                  title={item.kind === "surface" ? "Load this surface into the canvas" : item.summary ? JSON.stringify(item.summary) : undefined}
+                  title={item.kind === "surface" ? "بارگذاری این سطح در نما" : item.summary ? JSON.stringify(item.summary) : undefined}
                 >
                   <div className="flex items-center gap-1.5">
                     <span className="text-[10px] font-mono uppercase text-cyan/90">{item.kind}</span>
                     <StatusBadge status={item.status} className="!h-[15px] !text-[9px]" />
-                    <span className="ml-auto text-[9px] font-mono text-muted">{fmtInt(item.source_point_count)}p</span>
+                    <span className="ms-auto text-[9px] font-mono text-muted">{fmtInt(item.source_point_count)}p</span>
                   </div>
                   <div className="text-[10px] text-ink/80 truncate mt-0.5">{item.name}</div>
                   <div className="text-[9px] text-muted font-mono truncate">

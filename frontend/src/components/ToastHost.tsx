@@ -6,7 +6,7 @@ export default function ToastHost() {
   const dismiss = useWorkspace((s) => s.dismissToast);
 
   return (
-    <div className="fixed bottom-4 right-4 z-[60] flex flex-col gap-2 max-w-sm">
+    <div className="fixed bottom-4 end-4 z-[60] flex flex-col gap-2 max-w-sm">
       {toasts.map((toast) => {
         const tones = {
           info: { border: "border-cyan/40", icon: <Info size={14} className="text-cyan" /> },

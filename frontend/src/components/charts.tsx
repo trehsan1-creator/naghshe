@@ -28,7 +28,7 @@ export function ProfileChart({ profile }: { profile: ProfileResult }) {
 
   const values = [...existing, ...design].filter((v): v is number => v !== null);
   if (!samples.length || !values.length) {
-    return <div className="p-3 text-[11px] text-muted">No samples along the alignment.</div>;
+    return <div className="p-3 text-[11px] text-muted">در امتداد مسیر نمونه‌ای وجود ندارد.</div>;
   }
   const zMin = Math.min(...values);
   const zMax = Math.max(...values);
@@ -62,7 +62,7 @@ export function ProfileChart({ profile }: { profile: ProfileResult }) {
 
   return (
     <div className="p-2">
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Longitudinal profile">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="نیمرخ طولی">
         <rect x={PAD.left} y={PAD.top} width={W - PAD.left - PAD.right} height={H - PAD.top - PAD.bottom} fill="#121417" />
         {yTicks.map((tick) => (
           <g key={`y${tick}`}>
@@ -104,12 +104,12 @@ export function ProfileChart({ profile }: { profile: ProfileResult }) {
       </svg>
       <div className="flex items-center gap-3 px-1 text-[9px] font-mono text-muted">
         <span className="flex items-center gap-1">
-          <span className="w-3 h-[2px] bg-cyan inline-block" /> existing
+          <span className="w-3 h-[2px] bg-cyan inline-block" /> موجود
         </span>
         <span className="flex items-center gap-1">
-          <span className="w-3 h-[2px] bg-pink inline-block" /> design
+          <span className="w-3 h-[2px] bg-pink inline-block" /> طرح
         </span>
-        <span className="ml-auto">
+        <span className="ms-auto">
           L {fmt(profile.length_m, 2)} m · Z {fmt(profile.min_elevation, 2)} → {fmt(profile.max_elevation, 2)} m ·
           x{(gain).toFixed(1)} v.e.
         </span>
@@ -148,7 +148,7 @@ export function CrossSectionChart({ section, station }: { section: CrossSection;
     <div className="panel">
       <div className="px-2 py-1 border-b border-edge/60 flex items-center text-[9px] font-mono text-muted">
         <span>STA {fmt(station, 1)} m</span>
-        <span className="ml-auto">
+        <span className="ms-auto">
           {xMin.toFixed(1)} … {xMax.toFixed(1)} m · ΔZ {fmt(zMax - zMin, 2)} m
         </span>
       </div>
@@ -201,8 +201,8 @@ export function CrossSectionChart({ section, station }: { section: CrossSection;
 export function VolumeBars({ volume }: { volume: VolumeResult }) {
   const total = volume.cut_m3 + volume.fill_m3 || 1;
   const rows = [
-    { label: "Cut", value: volume.cut_m3, color: "#A3E635" },
-    { label: "Fill", value: volume.fill_m3, color: "#F472B6" },
+    { label: "خاک‌برداری", value: volume.cut_m3, color: "#A3E635" },
+    { label: "خاک‌ریزی", value: volume.fill_m3, color: "#F472B6" },
   ];
   return (
     <div className="space-y-1.5">
@@ -215,13 +215,13 @@ export function VolumeBars({ volume }: { volume: VolumeResult }) {
               style={{ width: `${Math.max((row.value / total) * 100, 1)}%`, background: row.color }}
             />
           </div>
-          <span className="w-20 text-right tabular" style={{ color: row.color }}>
+          <span className="w-20 text-end tabular" style={{ color: row.color }}>
             {fmt(row.value, 2)} m³
           </span>
         </div>
       ))}
       <div className="flex items-center justify-between text-[10px] font-mono border-t border-edge/60 pt-1.5">
-        <span className="text-muted">Net ({volume.net_m3 >= 0 ? "cut surplus" : "fill surplus"})</span>
+        <span className="text-muted">Net ({volume.net_m3 >= 0 ? "مازاد خاک‌برداری" : "مازاد خاک‌ریزی"})</span>
         <span className={volume.net_m3 >= 0 ? "text-lime" : "text-pink"}>{fmt(volume.net_m3, 2)} m³</span>
       </div>
     </div>
