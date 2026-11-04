@@ -1,5 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import { useWorkspace } from "../store/workspace";
@@ -124,9 +125,36 @@ describe("SurveyPro shell", () => {
     expect(screen.getAllByText(/مختصات شرقی|مختصات شمالی/i).length).toBeGreaterThan(0);
   });
 
-  it("shows the workspace toolbar, layers and point table for a loaded project", async () => {
+  it("shows the workspace toolbar and lets each imported survey get its own named surface", async () => {
+    const user = userEvent.setup();
     useWorkspace.setState({
-      project: demoProject as never,
+      project: {
+        ...demoProject,
+        files: [
+          {
+            id: "file-old",
+            project_id: "proj-1",
+            original_filename: "survey-old.csv",
+            file_format: "csv",
+            status: "COMMITTED",
+            row_count: 3,
+            imported_points: 3,
+            size_bytes: 120,
+            sha256: "old-hash",
+          },
+          {
+            id: "file-new",
+            project_id: "proj-1",
+            original_filename: "survey-new.csv",
+            file_format: "csv",
+            status: "COMMITTED",
+            row_count: 3,
+            imported_points: 3,
+            size_bytes: 120,
+            sha256: "new-hash",
+          },
+        ],
+      } as never,
       points: [point] as never,
       pointsTotal: 1,
       view: "workspace",
@@ -141,7 +169,13 @@ describe("SurveyPro shell", () => {
     expect(await screen.findByText("جدول نقاط برداشت")).toBeInTheDocument();
     expect(screen.getByText("لایه‌ها")).toBeInTheDocument();
     expect(screen.getByText("Surface")).toBeInTheDocument();
-    expect(screen.getByText("ساخت شبکه مثلثی مقید")).toBeInTheDocument();
+    expect(screen.getByText("فایل برداشتِ این سطح")).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /survey-old.csv/ })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /survey-new.csv/ })).toBeInTheDocument();
+    const filePicker = screen.getByRole("combobox", { name: "فایل برداشتِ این سطح" });
+    await user.selectOptions(filePicker, "file-old");
+    expect(screen.getByRole("textbox", { name: "نام سطح" })).toHaveValue("survey-old · سطح");
+    expect(screen.getByRole("button", { name: "ساخت سطح از فایل انتخاب‌شده" })).toBeEnabled();
     expect(screen.getAllByText("CL1_ST").length).toBeGreaterThan(0);
     expect(await screen.findByTestId("plan-canvas")).toBeInTheDocument();
   });

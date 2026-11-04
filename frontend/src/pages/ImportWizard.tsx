@@ -95,7 +95,7 @@ export default function ImportWizard() {
             <div className="text-[10px] uppercase tracking-[0.2em] text-cyan/80">گام ۱ · ورود داده</div>
             <h1 className="text-lg font-semibold tracking-tight mt-0.5">ورود داده‌های برداشت</h1>
             <p className="text-[11px] text-muted mt-1">
-              فایل‌های TXT/CSV توتال‌استیشن با تشخیص خودکار کدگذاری، جداکننده و ستون‌ها؛ همچنین خروجی Leica GSI-8/16 با تبدیل مختصات قطبی به قائم.
+              فایل‌های TXT/CSV توتال‌استیشن و Leica GSI-8/16 پشتیبانی می‌شوند. برای مقایسهٔ دو برداشت، هر فایل را جداگانه در همین پروژه وارد کنید؛ سپس برای هر فایل یک سطح مستقل بسازید.
             </p>
           </div>
           <div className="ms-auto flex items-center gap-2">
