@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: naghshe-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: SURVEYPRO_ENVIRONMENT
+        value: production
+      - key: SURVEYPRO_DEBUG
+        value: "false"
+      - key: SURVEYPRO_DATABASE_URL
+        value: sqlite+aiosqlite:///./data/surveypro.db
+      - key: SURVEYPRO_UPLOAD_DIR
+        value: /app/data/uploads
+      - key: SURVEYPRO_SAMPLE_DATA_DIR
+        value: /sample_data
+      - key: SURVEYPRO_CORS_ORIGINS
+        value: "*"
